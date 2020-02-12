@@ -22,14 +22,12 @@ bool Engine::init(const char* title, int xpos, int ypos, int width, int height, 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		// Create the window.
-		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-		if (m_pWindow != nullptr) // Window init success.
+		if (TextureManager::getInstance().createWindow(title, xpos, ypos, width, height, flags)) // Window init success.
 		{
-			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-			if (m_pRenderer != nullptr) // Renderer init success.
+			if (TextureManager::getInstance().createRenderer()) // Renderer init success.
 			{
-				m_pTexture = IMG_LoadTexture(m_pRenderer, "tree.png");
-				b_pTexture = IMG_LoadTexture(m_pRenderer, "sky.png");
+				floorID = TextureManager::getInstance().addTexture("floor.png");
+				EnemyID = TextureManager::getInstance().addTexture("zombie.png");
 				cout << (int)SDL_NumJoysticks << endl;
 			/*	if (SDL_NumJoysticks > 0)
 				{
@@ -54,14 +52,16 @@ bool Engine::init(const char* title, int xpos, int ypos, int width, int height, 
 	m_iKeystates = SDL_GetKeyboardState(nullptr);
 	m_bRunning = true; // Everything is okay, start the engine.
 	numPlayers = 1;
+	m_pMap = new Map();
 	for (int i = 0; i < numPlayers; i++)
 	{
-		m_pPlayers[i] = new Player();
+		m_pPlayers[i] = new Player(m_pMap->getWallVec());
 	}
 	binds[0] = SDL_SCANCODE_UP;
 	binds[1] = SDL_SCANCODE_DOWN;
 	binds[2] = SDL_SCANCODE_LEFT;
 	binds[3] = SDL_SCANCODE_RIGHT;
+	m_pEnemy = new Enemy(m_pMap->getWallVec());
 	cout << "Success!" << endl;
 	return true;
 }
@@ -113,26 +113,36 @@ void Engine::handleEvents()
 
 void Engine::update()
 {
+	m_pEnemy->update();
 	for (int i = 0; i < numPlayers; i++)
+	{
 		m_pPlayers[i]->update();
+		if (m_pPlayers[i]->touchEnemy(m_pEnemy->getRect()))
+			m_pPlayers[i]->respawn();
+	}
 //	b_pSky->update();
 }
 
 void Engine::render()
 {
-SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
-// Clear the screen with the draw color.
+	TextureManager::getInstance().DrawBacking(floorID);
+	m_pMap->DrawMap();
+	// Clear the screen with the draw color.
 	for (int i = 0; i < numPlayers; i++)
-		SDL_RenderCopyEx(m_pRenderer, m_pTexture, NULL, &(m_pPlayers[i]->getRect()), (m_pPlayers[i]->getRotation() - 90), NULL, SDL_FLIP_NONE);
+		m_pPlayers[i]->render();
+	TextureManager::getInstance().Draw(EnemyID, &(m_pEnemy->getRect()), NULL, m_pEnemy->getRotation() , NULL, SDL_FLIP_NONE);
 	// Draw anew.
-	SDL_RenderPresent(m_pRenderer);
+	TextureManager::getInstance().RenderPresent();
 }
 
 void Engine::clean()
 {
 	cout << "Cleaning game." << endl;
-	SDL_DestroyRenderer(m_pRenderer);
-	SDL_DestroyWindow(m_pWindow);
+	delete m_pMap;
+	m_pMap = nullptr;
+	delete m_pEnemy;
+	m_pEnemy = nullptr;
+	TextureManager::getInstance().clean();
 	for (int i = 0; i < numPlayers; i++)
 		delete(m_pPlayers[i]);
 	SDL_Quit();

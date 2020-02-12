@@ -2,8 +2,10 @@
 #include "Engine.h"
 #include "basic_includes.h"
 #include <math.h>
+#include "Map.h"
+#include "TextureManager.h"
 
-
+class TextureManager;
 class Player
 {
 private:
@@ -18,16 +20,22 @@ private:
 	void mousemovement();
 	int mouseX;
 	int mouseY;
-
+	vector<SDL_Rect> wallVec;
+	int TextureID;
+	string texture;
 public:
-	Player();
+	Player(vector<SDL_Rect>);
 	~Player();
 	void setControlType(int);
 	void setKeybinds(SDL_Scancode*);
 	void setDefaultinds();
+	void setWallVec(vector<SDL_Rect>);
 	SDL_Rect getRect();
 	double getRotation();
 	void update(); //this is the update fucntin called for the player
 	void render();//This will be the render fucntion called by the engine's update function
+	bool check(char);
+	bool touchEnemy(SDL_Rect);
+	void respawn();
 };
 
