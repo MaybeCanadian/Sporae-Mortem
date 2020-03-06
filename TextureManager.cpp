@@ -1,6 +1,4 @@
 #include "TextureManager.h"
-#include "basic_includes.h"
-
 
 TextureManager::TextureManager()
 {
@@ -18,33 +16,16 @@ TextureManager & TextureManager::getInstance()
 	return instance;
 }
 
-bool TextureManager::createRenderer()
-{
-	m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-	if (m_pRenderer != NULL)
-		return true;
-	else
-		return false;
-}
-
-bool TextureManager::createWindow(const char* title, int xpos, int ypos, int width, int height, int flags)
-{
-	m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-	if (m_pWindow != NULL)
-		return true;
-	else
-		return false;
-}
-
 void TextureManager::clean()
 {
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
-	for (int i = 0 ; i < (int)textures.size(); i++)
-		SDL_DestroyTexture(textures[i]);
+	textures.clear();
+	textures.shrink_to_fit();
+	std::cout << "textureManager clean.\n";
 }
 
-void TextureManager::Draw(const int textureID, const SDL_Rect* position, const SDL_Rect* area, const double rotation, const SDL_Rect* centre, const SDL_RendererFlip flip)
+void TextureManager::DrawEx(const int textureID, const SDL_Rect* position, const SDL_Rect* area, const double rotation, const SDL_Rect* centre, const SDL_RendererFlip flip)
 {
 	SDL_RenderCopyEx(m_pRenderer, textures[textureID], NULL, position, rotation, NULL, flip);
 }
@@ -59,12 +40,56 @@ void TextureManager::DrawBacking(const int textureID)
 	SDL_RenderCopy(m_pRenderer, textures[textureID], NULL, NULL);
 }
 
-int TextureManager::addTexture(string texture)
+void TextureManager::SetBlendMode()
+{
+	SDL_SetRenderDrawBlendMode(m_pRenderer, SDL_BLENDMODE_BLEND);
+}
+
+void TextureManager::SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	SDL_SetRenderDrawColor(m_pRenderer, r, g, b, a);
+}
+
+void TextureManager::FillRect(SDL_Rect* rect)
+{
+	SDL_RenderFillRect(m_pRenderer, rect);
+}
+
+void TextureManager::RenderClear()
+{
+	SDL_RenderClear(m_pRenderer);
+}
+
+void TextureManager::Draw(const int textureID, const SDL_Rect* src, const SDL_Rect* dst)
+{
+	SDL_RenderCopy(m_pRenderer, textures[textureID], src, dst);
+}
+
+int TextureManager::addTexture(std::string texture)
 {
 	SDL_Texture *textureBuffer;
 	const char* charBuffer = texture.c_str();
-	textureBuffer =  IMG_LoadTexture(m_pRenderer, charBuffer);
+	textureBuffer = IMG_LoadTexture(m_pRenderer, charBuffer);
 	textures.push_back(textureBuffer);
 	return ((int)textures.size() - 1);
+}
+
+bool TextureManager::initManager(const char * title, int xpos, int ypos, int width, int height, int flags)
+{
+	m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+	if (m_pWindow != NULL)
+	{
+		m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+		if (m_pRenderer != NULL)
+		{
+			SetBlendMode();
+			std::cout << "textureManager init.\n";
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
 }
 

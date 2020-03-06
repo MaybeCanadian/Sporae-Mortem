@@ -1,21 +1,19 @@
 #pragma once
-#include "basic_includes.h"
-#include "sound.h"
-#include "Enemy.h"
+#include "ObjectManager.h"
+#include "sounds.h"
 
-class sound;
-class Enemy;
-
+class sounds;
 class SoundManager
 {
 private:
-	SoundManager();
-	vector<sound*> sounds;
+	std::vector<sounds*> s_vSounds;
 public:
-	static SoundManager& getInstance(); //singleton for the sound manager
-	void soundCreate(int x, int y, int radius, int duration); //makes a sound, sounds last fo 1 frame only for detection purposes
-	bool soundDetect(double radius, SDL_Rect position, sound soundInput); //detects if a sound is within a certain enemy radius
-	vector<sound*> getSoundVector();
+	SoundManager();
+	void soundsCreate(int x, int y, int radius, int duration); //adds a new sound at the point with a certain radius
+	bool DetectSounds(double radius, SDL_Rect* position, SDL_Point* nearest); //checks all sounds, returns if it heard any and stores the nearest sound in nearest, nothing happens if none detected
+	void update(); //updates the sounds
+	bool initManager(); //inits the manager
+	void clean(); //cleans the manager
 	~SoundManager();
 };
 

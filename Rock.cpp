@@ -1,27 +1,39 @@
 #include "Rock.h"
 
-
-
-Rock::Rock(double rotation, SDL_Rect player)
+Rock::Rock(int x, int y, double rot)
 {
-	unitVecX = cos(rotation);
-	unitVecY = sin(rotation);
-	speed = 5;
-	m_dst.x = player.x;
-	m_dst.y = player.y;
-}
-
-Rock::~Rock()
-{
+	pos = { x, y, 5, 5};
+	rotation = rot;
+	speed = 10;
+	r_active = true;
 }
 
 void Rock::update()
 {
-	m_dst.x = m_dst.x + speed * unitVecX;
-	m_dst.y = m_dst.y + speed * unitVecY;
+	pos.x = pos.x + (speed * cos(rotation));
+	pos.y = pos.y + (speed * sin(rotation));
+
+	if (pos.x < 0 || pos.y < 0 || pos.x > WIDTH || pos.y > HEIGHT)
+	{
+		r_active = false;
+		ObjectManager::getInstance().getSoundManager()->soundsCreate(pos.x, pos.y, 30, 1);
+		std::cout << "noise\n";
+	}
+
+
+}
+
+bool Rock::getActive()
+{
+	return r_active;
 }
 
 void Rock::render()
 {
+	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
+	TextureManager::getInstance().FillRect(&pos);
+}
 
+Rock::~Rock()
+{
 }

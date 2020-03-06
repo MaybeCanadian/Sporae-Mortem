@@ -1,17 +1,18 @@
 #pragma once
-#include "basic_includes.h"
+#include "ProjectileManager.h"
 
 class Rock
 {
 private:
-	SDL_Rect m_dst;
-	double unitVecX;
-	double unitVecY;
+	SDL_Rect pos;
+	double rotation;
+	bool r_active;
 	int speed;
 public:
-	Rock(double rotation, SDL_Rect player);
-	~Rock();
+	Rock(int x, int y, double rot);
 	void update();
+	bool getActive();
 	void render();
+	~Rock();
 };
 

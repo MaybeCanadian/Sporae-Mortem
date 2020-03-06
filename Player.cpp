@@ -1,26 +1,22 @@
 #include "Player.h"
 
-void Player::keyboardmovement(SDL_Scancode* binds)
+void Player::keyboardmovement()
 {
-	if (Engine::getInstance().keyDown(binds[0]))
+	if (InputManager::getInstance().KeyDown(keybinds[0]))
 	{
-		if (m_dst.y > 0 && check('w'))
-			m_dst.y -= speed;
+		moveUP();
 	}
-	if (Engine::getInstance().keyDown(binds[1]))
+	if (InputManager::getInstance().KeyDown(keybinds[1]))
 	{
-		if (m_dst.y < HEIGHT - m_dst.h && check('s'))
-			m_dst.y += speed;
+		moveDOWN();
 	}
-	if (Engine::getInstance().keyDown(binds[2]))
+	if (InputManager::getInstance().KeyDown(keybinds[2]))
 	{
-		if (m_dst.x > 0 && check('a'))
-			m_dst.x -= speed;
+		moveLEFT();
 	}
-	if (Engine::getInstance().keyDown(binds[3]))
+	if (InputManager::getInstance().KeyDown(keybinds[3]))
 	{
-		if (m_dst.x - m_dst.w < WIDTH && check('d'))
-			m_dst.x += speed;
+		moveRIGHT();
 	}
 }
 
@@ -28,33 +24,21 @@ void Player::controllermovement()
 {
 }
 
-void Player::mousemovement()
-{
-	SDL_GetMouseState(&mouseX, &mouseY);
-	if (mouseX != m_dst.x) 
-		rotation = (180/3.14) * atan2(((m_dst.y + m_dst.h/2) - mouseY), ((m_dst.x + m_dst.w/2) - mouseX));
-	else
-		rotation = 0;
-}
 
-Player::Player(vector<SDL_Rect> v)
+Player::Player(int x, int y, int type)
 {
-	m_dst.x = STARTPOINTX;
-	m_dst.y = STARTPOINTY;
-	m_dst.h = PLAYERSIZE;
-	m_dst.w = PLAYERSIZE;
+	m_dst.x = x;
+	m_dst.y = y;
+	m_dst.h = 10;
+	m_dst.w = 10;
+	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	control_type = 1;
 	setDefaultinds();
-	speed = 5;
-	mouseX = 0;
-	mouseY = 0;
+	speed = 1;
 	SDL_WarpMouseInWindow(NULL, 0, 0);
-	setWallVec(v);
 	texture = "prisoner.png";
-	TextureID = TextureManager::getInstance().addTexture(texture);
+	textureID = TextureManager::getInstance().addTexture(texture);
 }
-
-
 
 Player::~Player()
 {
@@ -79,57 +63,85 @@ void Player::setDefaultinds()
 	keybinds[3] = SDL_SCANCODE_D;
 }
 
-void Player::setWallVec(vector<SDL_Rect> v)
+SDL_Rect* Player::getRect()
 {
-	wallVec = v;
-}
-
-SDL_Rect Player::getRect()
-{
-	return m_dst;
+	return &m_dst;
 }
 
 double Player::getRotation()
 {
-	return rotation;
+	SDL_Point buffer = { m_dst.x + m_dst.w / 2, m_dst.y + m_dst.h / 2 };
+	if (mouseX != m_dst.x)
+		return UTIL::Rotation(InputManager::getInstance().getMouse(), &buffer);
+	else
+		std::cout << rotation << std::endl;
+		return 0;
 }
 
 void Player::update()
 {
 	if (control_type == 1)
 	{
-		keyboardmovement(keybinds);
-		mousemovement();
+		keyboardmovement();
+		mouseAttack();
 	}
 	else if (control_type == 2)
 		controllermovement();
 	else
-		cout << "error" << endl;
+		std::cout << "error" << std::endl;
+
 }
 
 void Player::render()
 {
-	TextureManager::getInstance().Draw(TextureID, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
-}
-
-bool Player::check(char wsad)
-{
-	Map map(wallVec);
-	map.setWSAD(m_dst);
-	return map.notHitBound(m_dst,wsad,SPEED);
-}
-
-bool Player::touchEnemy(SDL_Rect e)
-{
-	return (!((m_dst.x > e.x + e.w) ||
-		(m_dst.x + m_dst.w < e.x) ||
-		(m_dst.y + m_dst.h < e.y) ||
-		(m_dst.y > e.y + e.h)));
+	//TextureManager::getInstance().DrawEx(TextureID, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
+	TextureManager::getInstance().SetDrawColor(0, 255, 255, 255);
+	TextureManager::getInstance().FillRect(&m_dst);
 }
 
 void Player::respawn()
 {
-	m_dst = { STARTPOINTX,STARTPOINTY,PLAYERSIZE,PLAYERSIZE };
+	m_dst = { 30, 30 };
+}
+
+void Player::moveUP()
+{
+	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
+	future.y -= speed;
+	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.y > 0)
+		m_dst.y -= speed;
+}
+
+void Player::moveDOWN()
+{
+	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
+	future.y += speed;
+	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.y < HEIGHT)
+		m_dst.y += speed;
+}
+
+void Player::moveLEFT()
+{
+	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
+	future.x -= speed;
+	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.x > 0)
+		m_dst.x -= speed;
+}
+
+void Player::mouseAttack()
+{
+	if (InputManager::getInstance().getMouseClick(0))
+	{
+		ObjectManager::getInstance().getProjectileManager()->addRock(m_dst.x, m_dst.y, getRotation());
+	}
+}
+
+void Player::moveRIGHT()
+{
+	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
+	future.x += speed;
+	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.x < WIDTH)
+		m_dst.x += speed;
 }
 
 
