@@ -79,6 +79,8 @@ void ObjectManager::update()
 void ObjectManager::render()
 {
 	projectilemanager->render();
+	soundmanager->render();
+	enemymanager->render();
 	playermanager->render();
 }
 

@@ -58,6 +58,14 @@ void SoundManager::update()
 				s_vSounds.erase(s_vSounds.begin()+i);
 }
 
+void SoundManager::render()
+{
+	for (int i = 0; i < (int)s_vSounds.size(); i++)
+	{
+		s_vSounds[i]->render();
+	}
+}
+
 bool SoundManager::initManager()
 {
 	//nothing to init right now
@@ -67,7 +75,7 @@ bool SoundManager::initManager()
 
 void SoundManager::clean()
 {
-	s_vSounds.clear();
+	s_vSounds.clear(); //fix
 	s_vSounds.shrink_to_fit();
 	std::cout << "soundManager clean.\n";
 }

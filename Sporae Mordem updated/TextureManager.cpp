@@ -25,9 +25,9 @@ void TextureManager::clean()
 	std::cout << "textureManager clean.\n";
 }
 
-void TextureManager::DrawEx(const int textureID, const SDL_Rect* position, const SDL_Rect* area, const double rotation, const SDL_Rect* centre, const SDL_RendererFlip flip)
+void TextureManager::DrawEx(const int textureID, const SDL_Rect* position, const SDL_Rect* area, const double rotation, const SDL_Point* centre, const SDL_RendererFlip flip)
 {
-	SDL_RenderCopyEx(m_pRenderer, textures[textureID], NULL, position, rotation, NULL, flip);
+	SDL_RenderCopyEx(m_pRenderer, textures[textureID], area, position, rotation, centre, flip);
 }
 
 void TextureManager::RenderPresent()
@@ -53,6 +53,12 @@ void TextureManager::SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 void TextureManager::FillRect(SDL_Rect* rect)
 {
 	SDL_RenderFillRect(m_pRenderer, rect);
+}
+
+void TextureManager::FillCircle(SDL_Point * pos, double radius) //makes a rect for now
+{
+	SDL_Rect buffer = { pos->x, pos->y, radius * 2 , radius * 2 };
+	FillRect(&buffer);
 }
 
 void TextureManager::RenderClear()

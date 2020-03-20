@@ -141,7 +141,9 @@
     <ClCompile Include="LoadZone.cpp">
       <Filter>Managers\Level\Wall</Filter>
     </ClCompile>
-    <ClCompile Include="LevelStateManager.cpp" />
+    <ClCompile Include="LevelStateManager.cpp">
+      <Filter>Managers\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -231,6 +233,8 @@
     <ClInclude Include="LoadZone.h">
       <Filter>Managers\Level\Wall</Filter>
     </ClInclude>
-    <ClInclude Include="LevelStateManager.h" />
+    <ClInclude Include="LevelStateManager.h">
+      <Filter>Managers\Level</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

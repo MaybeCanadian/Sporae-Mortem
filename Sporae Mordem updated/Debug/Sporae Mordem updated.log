@@ -1,0 +1,165 @@
+﻿  AudioManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemyManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ExitButton.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  InputManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  LevelManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\levelmanager.cpp(44): warning C4390: ';': empty controlled statement found; is this the intent?
+  LevelStateManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  LoadZone.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ObjectManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  PlayButton.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  PlayerManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ProjectileManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ResumeButton.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Rock.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\rock.cpp(13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\rock.cpp(14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  SoundManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\soundmanager.cpp(16): warning C4305: 'initializing': truncation from '__int64' to 'float'
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\soundmanager.cpp(26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  State.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  StateGame.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  StateManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  StateMenu.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  StatePause.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  TextureManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\texturemanager.cpp(60): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\texturemanager.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  UIManager.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  button.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  enemy.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  engine.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  menuButton.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  pauseButton.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  sounds.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  wall.cpp
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Sporae Mordem updated.vcxproj -> C:\Users\ecoff\source\repos\Sporae Mordem updated\Debug\Sporae Mordem updated.exe

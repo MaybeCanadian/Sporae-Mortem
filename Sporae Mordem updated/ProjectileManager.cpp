@@ -8,7 +8,6 @@ ProjectileManager::ProjectileManager()
 
 bool ProjectileManager::initManager()
 {
-	//nothing to init right now
 	std::cout << "projectileManager init.\n";
 	return true;
 }
@@ -26,7 +25,7 @@ void ProjectileManager::addRock(int x, int y, double rotation)
 
 void ProjectileManager::update()
 {
-		for (int i = 0; i < (int)r_vRocks.size(); i++)
+	for (int i = 0; i < (int)r_vRocks.size(); i++)
 		{
 			r_vRocks[i]->update();
 			if (r_vRocks[i]->getActive() == false)
@@ -35,7 +34,7 @@ void ProjectileManager::update()
 				r_vRocks[i] = nullptr;
 			}
 		}
-
+	
 	if (!r_vRocks.empty())
 	{
 		for (int i = 0; i < (int)r_vRocks.size(); i++)

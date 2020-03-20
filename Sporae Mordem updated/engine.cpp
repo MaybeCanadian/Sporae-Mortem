@@ -48,6 +48,7 @@ bool engine::init(const char * title, int xpos, int ypos, int width, int height,
 	else return false;
 
 	std::cout << "All managers init.\nStarting engine.\n\n\n";
+	m_fps = (Uint32)round(1 / (double)FPS * 1000);
 	m_bRunning = true;
 
 	return true;

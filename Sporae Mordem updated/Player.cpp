@@ -24,20 +24,18 @@ void Player::controllermovement()
 {
 }
 
-
-Player::Player(int x, int y, int type)
+Player::Player(int x, int y, int type, int id)
 {
 	m_dst.x = x;
 	m_dst.y = y;
-	m_dst.h = 10;
-	m_dst.w = 10;
+	m_dst.h = 25;
+	m_dst.w = 25;
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	control_type = 1;
 	setDefaultinds();
-	speed = 1;
+	speed = 5;
 	SDL_WarpMouseInWindow(NULL, 0, 0);
-	texture = "prisoner.png";
-	textureID = TextureManager::getInstance().addTexture(texture);
+	TextureID = id;
 }
 
 Player::~Player()
@@ -94,9 +92,7 @@ void Player::update()
 
 void Player::render()
 {
-	//TextureManager::getInstance().DrawEx(TextureID, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
-	TextureManager::getInstance().SetDrawColor(0, 255, 255, 255);
-	TextureManager::getInstance().FillRect(&m_dst);
+	TextureManager::getInstance().DrawEx(TextureID, &m_dst, NULL, rotation * 180 / 3.14 + 90, NULL, SDL_FLIP_NONE);
 }
 
 void Player::respawn()
@@ -108,7 +104,7 @@ void Player::moveUP()
 {
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.y -= speed;
-	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.y > 0)
+	if (!LevelManager::getInstance().checkWallNear(&future) && future.y > 0)
 		m_dst.y -= speed;
 }
 
@@ -116,7 +112,7 @@ void Player::moveDOWN()
 {
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.y += speed;
-	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.y < HEIGHT)
+	if (!LevelManager::getInstance().checkWallNear(&future) && future.y < HEIGHT)
 		m_dst.y += speed;
 }
 
@@ -124,23 +120,22 @@ void Player::moveLEFT()
 {
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.x -= speed;
-	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.x > 0)
+	if (!LevelManager::getInstance().checkWallNear(&future) && future.x > 0)
 		m_dst.x -= speed;
 }
 
 void Player::mouseAttack()
 {
+	rotation = getRotation();
 	if (InputManager::getInstance().getMouseClick(0))
-	{
-		ObjectManager::getInstance().getProjectileManager()->addRock(m_dst.x, m_dst.y, getRotation());
-	}
+		ObjectManager::getInstance().getProjectileManager()->addRock(m_dst.x, m_dst.y, rotation);
 }
 
 void Player::moveRIGHT()
 {
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.x += speed;
-	//if (!ObjectManager::getInstance().checkCollideWallNear(&future) && future.x < WIDTH)
+	if (!LevelManager::getInstance().checkWallNear(&future) && future.x < WIDTH)
 		m_dst.x += speed;
 }
 

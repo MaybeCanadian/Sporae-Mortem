@@ -10,7 +10,7 @@ private:
 	SDL_Scancode keybinds[4]; //up, down, left, right
 	double rotation;
 	int mouseX, mouseY;
-	std::string texture;
+	int TextureID;
 
 private:
 	void keyboardmovement(); //movement for keyboard control
@@ -22,7 +22,7 @@ private:
 	void mouseAttack();
 
 public:
-	Player(int x, int y, int type);
+	Player(int x, int y, int type, int id);
 	~Player();
 	void setControlType(int); //sets control type between keyboard and controller
 	void setKeybinds(SDL_Scancode*); //sets the binds to the input

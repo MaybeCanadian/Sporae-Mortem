@@ -7,6 +7,8 @@ class ProjectileManager
 {
 private:
 	std::vector<Rock*> r_vRocks;
+	bool updateRock;
+	int rocktimer;
 public:
 	ProjectileManager();
 	bool initManager();

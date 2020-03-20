@@ -17,6 +17,7 @@ sounds::sounds(int x, int y, double rad, int dur)
 	radius = rad;
 	s_active = true;
 	time = 0;
+	duration = dur;
 }
 
 void sounds::update()
@@ -24,6 +25,12 @@ void sounds::update()
 	time++;
 	if (time > duration)
 		s_active = false;
+}
+
+void sounds::render()
+{
+	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
+	TextureManager::getInstance().FillCircle(&position, radius);
 }
 
 bool sounds::getActive()

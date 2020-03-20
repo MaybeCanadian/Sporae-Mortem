@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <math.h>
+#include <vector>
+#include <algorithm>
 
 class UTIL //fun things i can use
 {
@@ -45,5 +47,63 @@ public:
 	static double Rotation(SDL_Point* p1, SDL_Point* p2) //player p2, mouse p1, in degrees
 	{
 		return (atan2((p1->y - p2->y) , (p1->x - p2->x)));
+	}
+
+	static bool LineLineCollide(SDL_Point line1Start, SDL_Point line1End, SDL_Point line2Start, SDL_Point line2End)
+	{
+		int x1 = line1Start.x;
+		int x2 = line1End.x;
+		int x3 = line2Start.x;
+		int x4 = line2End.x;
+		int y1 = line1Start.y;
+		int y2 = line1End.y;
+		int y3 = line2Start.y;
+		int y4 = line2End.y;
+
+		// calculate the distance to intersection point
+		float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)) * 1.0;
+		float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)) * 1.0;
+
+		// if uA and uB are between 0-1, lines are colliding
+		if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	static bool lineRectCheck(SDL_Point line1Start, SDL_Point line1End, SDL_Point recStart, float recWidth, float recHeight)
+	{
+		int x1 = line1Start.x;
+		int x2 = line1End.x;
+		int y1 = line1Start.y;
+		int y2 = line1End.y;
+		int rx = recStart.x;
+		int ry = recStart.y;
+		int rw = recWidth;
+		int rh = recHeight;
+
+
+		// check if the line has hit any of the rectangle's sides
+		// uses the Line/Line function below
+		SDL_Point vec1 = { x1, y1 };
+		SDL_Point vec2 = { x2, y2 };
+		SDL_Point vec3 = { rx, ry };
+		SDL_Point vec4 = { rx, ry + rh };
+		bool left = LineLineCollide(vec1, vec2, vec3, vec4);
+		vec1 = { x1, y1 }; vec2 = { x2, y2 }; vec3 = { rx + rw, ry }; vec4 = { rx + rw, ry + rh };
+		bool right = LineLineCollide(vec1, vec2, vec3, vec4);
+		vec1 = { x1, y1 }; vec2 = { x2, y2 }; vec3 = { rx, ry }; vec4 = { rx + rw, ry };
+		bool top = LineLineCollide(vec1, vec2, vec3, vec4);
+		vec1 = { x1, y1 }; vec2 = { x2, y2 }; vec3 = { rx, ry + rh }; vec4 = { rx + rw, ry + rh };
+		bool bottom = LineLineCollide(vec1, vec2, vec3, vec4);
+
+		// if ANY of the above are true, the line
+		// has hit the rectangle
+		if (left || right || top || bottom) {
+			return true;
+		}
+		return false;
 	}
 };

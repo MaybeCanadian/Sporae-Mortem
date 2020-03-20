@@ -4,7 +4,7 @@ Rock::Rock(int x, int y, double rot)
 {
 	pos = { x, y, 5, 5};
 	rotation = rot;
-	speed = 10;
+	speed = 5;
 	r_active = true;
 }
 
@@ -13,14 +13,12 @@ void Rock::update()
 	pos.x = pos.x + (speed * cos(rotation));
 	pos.y = pos.y + (speed * sin(rotation));
 
-	if (pos.x < 0 || pos.y < 0 || pos.x > WIDTH || pos.y > HEIGHT)
+	if (pos.x < 0 || pos.y < 0 || pos.x > WIDTH || pos.y > HEIGHT || LevelManager::getInstance().checkWallNear(&pos))
 	{
 		r_active = false;
-		ObjectManager::getInstance().getSoundManager()->soundsCreate(pos.x, pos.y, 30, 1);
+		ObjectManager::getInstance().getSoundManager()->soundsCreate(pos.x, pos.y, 50, 10);
 		std::cout << "noise\n";
 	}
-
-
 }
 
 bool Rock::getActive()

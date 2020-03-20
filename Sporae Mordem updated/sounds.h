@@ -14,6 +14,7 @@ public:
 	const SDL_Point* getPos(); //returns the origion of the sound
 	sounds(int x, int y, double rad, int dur); //sound needs x and y of origion and sound radius
 	void update();
+	void render();
 	bool getActive();
 	~sounds();
 };

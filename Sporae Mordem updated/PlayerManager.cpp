@@ -2,6 +2,11 @@
 
 
 
+void PlayerManager::loadTextures()
+{
+	playerID = TextureManager::getInstance().addTexture("prisoner.png");
+}
+
 PlayerManager::PlayerManager()
 {
 }
@@ -9,6 +14,8 @@ PlayerManager::PlayerManager()
 bool PlayerManager::initManager()
 {
 	//nothing to init yet
+	loadTextures();
+	numPlayers = 0;
 	std::cout << "playerManager init.\n";
 	return true;
 }
@@ -22,8 +29,10 @@ void PlayerManager::clean()
 
 void PlayerManager::addPlayer(int x, int y)
 {
-	p_vPlayers.push_back(new Player(x, y, (int)p_vPlayers.size()));
+	p_vPlayers.push_back(new Player(x, y, (int)p_vPlayers.size(), playerID));
+	numPlayers++;
 }
+
 
 void PlayerManager::removePlayer(int i)
 {
@@ -38,6 +47,7 @@ void PlayerManager::clearPlayers()
 	{
 		p_vPlayers.clear();
 		p_vPlayers.shrink_to_fit();
+		numPlayers = 0;
 	}
 }
 
@@ -61,6 +71,16 @@ void PlayerManager::render()
 			p_vPlayers[i]->render();
 		}
 	}
+}
+
+Player * PlayerManager::getPlayers(int i)
+{
+	return p_vPlayers[i];
+}
+
+int PlayerManager::getNumPlayers()
+{
+	return numPlayers;
 }
 
 

@@ -11,6 +11,7 @@ private:
 private:
 	StateManager();
 	void switchState(int newState); //exits old state, changes current state, enters new state
+
 public:
 	static StateManager& getInstance();
 	int getState(); //returns the current state

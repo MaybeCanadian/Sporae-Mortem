@@ -9,6 +9,7 @@ private:
 	UIManager();
 	std::vector<button*> ui_vButtons;
 	int buttonTextureID[5];
+	int backgroundID;
 
 private:
 	void renderButtons();

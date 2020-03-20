@@ -7,6 +7,12 @@ class PlayerManager
 {
 private:
 	std::vector<Player*> p_vPlayers;
+	int numPlayers;
+	int playerID;
+
+private:
+	void loadTextures();
+
 public:
 	PlayerManager();
 	bool initManager();
@@ -16,6 +22,8 @@ public:
 	void clearPlayers();
 	void update();
 	void render();
+	Player* getPlayers(int i);
+	int getNumPlayers();
 	~PlayerManager();
 };
 

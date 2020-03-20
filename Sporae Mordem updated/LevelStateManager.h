@@ -8,6 +8,8 @@ private:
 	int currentLevel;
 public:
 	static LevelStateManager& getInstance();
+	void clean();
+	bool initManager();
 	void changeLevel(int level);
 	~LevelStateManager();
 };
