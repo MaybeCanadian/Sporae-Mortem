@@ -18,6 +18,11 @@ bool AudioManager::initManager()
 	{
 		Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 8192);
 		Mix_AllocateChannels(32);
+		soundChunkID[0]=addSound("bg.mp3");
+		soundChunkID[1]=addSound("catch.mp3");
+		soundChunkID[2]=addSound("door_open_sound.mp3");
+		soundChunkID[3]=addSound("Run.mp3");
+		soundChunkID[4]=addSound("stone.mp3");
 		Mix_Volume(0, MIX_MAX_VOLUME / 2);
 		std::cout << "audioManager init.\n";
 		return true;
