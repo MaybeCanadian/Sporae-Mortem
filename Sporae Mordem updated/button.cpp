@@ -43,10 +43,10 @@ void button::update()
 
 void button::render()
 {
-	/*b_src.x = b_src.w * (int)b_state; need to add the files
-	TextureManager::getInstance().Draw(textueID, &b_src, &b_dst); */
-	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
-	TextureManager::getInstance().FillRect(&b_dst);
+	b_src.x = b_src.w * (int)b_state; //need to add the files
+	TextureManager::getInstance().Draw(textueID, &b_src, &b_dst); 
+	/*TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
+	TextureManager::getInstance().FillRect(&b_dst);*/
 }
 
 button::button()
