@@ -4,6 +4,7 @@ void Player::keyboardmovement()
 {
 	if (InputManager::getInstance().KeyDown(keybinds[0]))
 	{
+		AudioManager::getInstance().playSound(1, 3, 0);
 		moveUP();
 	}
 	if (InputManager::getInstance().KeyDown(keybinds[1]))
