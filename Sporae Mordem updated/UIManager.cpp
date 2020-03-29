@@ -21,11 +21,11 @@ UIManager & UIManager::getInstance()
 
 bool UIManager::initManager()
 {
-	buttonTextureID[0] = TextureManager::getInstance().addTexture("pause.png"); //add file name
-	buttonTextureID[1] = TextureManager::getInstance().addTexture("resume.png"); //add file name
-	buttonTextureID[2] = TextureManager::getInstance().addTexture("Play.png"); //add file name
-	buttonTextureID[3] = TextureManager::getInstance().addTexture("exit.png"); //add file name
-	buttonTextureID[4] = TextureManager::getInstance().addTexture("menu.png"); //add file name
+	buttonTextureID[0] = TextureManager::getInstance().addTexture("Image/pause.png"); //add file name
+	buttonTextureID[1] = TextureManager::getInstance().addTexture("Image/resume.png"); //add file name
+	buttonTextureID[2] = TextureManager::getInstance().addTexture("Image/Play.png"); //add file name
+	buttonTextureID[3] = TextureManager::getInstance().addTexture("Image/exit.png"); //add file name
+	buttonTextureID[4] = TextureManager::getInstance().addTexture("Image/menu.png"); //add file name
 	backgroundID = TextureManager::getInstance().addTexture("floor.png");
 	std::cout << "uimanager init.\n";
 	return true;

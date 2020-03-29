@@ -6,6 +6,7 @@ class AudioManager
 {
 private:
 	std::vector<Mix_Chunk*> sounds;
+	int soundChunkID[5];
 private:
 	AudioManager();
 public:
