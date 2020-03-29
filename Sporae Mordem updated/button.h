@@ -4,7 +4,8 @@
 class button
 {
 protected:
-	SDL_Rect b_dst, b_src;
+	SDL_Rect b_dst,
+		b_src = {0,0,400,100};
 	int textueID;
 	enum state { STATE_UP, STATE_OVER, STATE_DOWN } b_state;
 
