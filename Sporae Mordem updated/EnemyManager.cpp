@@ -21,15 +21,7 @@ bool EnemyManager::initManager()
 
 void EnemyManager::clean()
 {
-	if (!e_vEnemies.empty())
-	{
-		for (int i = 0; i < (int)e_vEnemies.size(); i++)
-		{
-			delete &e_vEnemies[i];
-			e_vEnemies[i] = nullptr;
-		}
-	}
-	//nothing to clean yet
+	ClearEnemies();
 	std::cout << "enemyManager clean.\n";
 }
 
@@ -57,6 +49,21 @@ void EnemyManager::render()
 		for(int i = 0; i < (int)e_vEnemies.size(); i++)
 			e_vEnemies[i]->render();
 	}
+}
+
+void EnemyManager::ClearEnemies()
+{
+	if (!e_vEnemies.empty())
+	{
+		for (int i = 0; i < (int)e_vEnemies.size(); i++)
+		{
+			delete e_vEnemies[i];
+			e_vEnemies[i] = nullptr;
+		}
+	}
+
+	e_vEnemies.clear();
+	e_vEnemies.shrink_to_fit();
 }
 
 EnemyManager::~EnemyManager()

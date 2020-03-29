@@ -16,6 +16,7 @@ public:
 	void addRock(int x, int y, double rotation);
 	void update();
 	void render();
+	void clearProjectiles();
 	~ProjectileManager();
 };
 

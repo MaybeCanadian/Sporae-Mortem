@@ -19,6 +19,10 @@ private:
 	int wallID;
 	bool onLoadZone;
 
+private:
+	void cleanWalls();
+	void cleanLoad();
+
 public:
 	static LevelManager& getInstance();
 	~LevelManager();

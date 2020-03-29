@@ -144,6 +144,12 @@
     <ClCompile Include="LevelStateManager.cpp">
       <Filter>Managers\Level</Filter>
     </ClCompile>
+    <ClCompile Include="settingsbutton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSettings.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -235,6 +241,12 @@
     </ClInclude>
     <ClInclude Include="LevelStateManager.h">
       <Filter>Managers\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="settingsbutton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSettings.h">
+      <Filter>Managers\StateMachine\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

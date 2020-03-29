@@ -22,8 +22,7 @@ bool PlayerManager::initManager()
 
 void PlayerManager::clean()
 {
-	p_vPlayers.clear();
-	p_vPlayers.shrink_to_fit();
+	clearPlayers();
 	std::cout << "playerManager clean.\n";
 }
 
@@ -45,6 +44,12 @@ void PlayerManager::clearPlayers()
 {
 	if (!p_vPlayers.empty())
 	{
+		for (int i = 0; i < (int)p_vPlayers.size(); i++)
+		{
+			delete p_vPlayers[i];
+			p_vPlayers[i] = 0;
+		}
+
 		p_vPlayers.clear();
 		p_vPlayers.shrink_to_fit();
 		numPlayers = 0;

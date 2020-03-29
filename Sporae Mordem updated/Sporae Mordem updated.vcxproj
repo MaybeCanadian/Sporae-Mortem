@@ -139,6 +139,7 @@
     <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="ResumeButton.cpp" />
     <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="settingsbutton.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="sounds.cpp" />
     <ClCompile Include="State.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="StateMenu.cpp" />
     <ClCompile Include="StatePause.cpp" />
+    <ClCompile Include="StateSettings.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="wall.cpp" />
@@ -170,6 +172,7 @@
     <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="ResumeButton.h" />
     <ClInclude Include="Rock.h" />
+    <ClInclude Include="settingsbutton.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="sounds.h" />
     <ClInclude Include="State.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="StateMenu.h" />
     <ClInclude Include="StatePause.h" />
+    <ClInclude Include="StateSettings.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="UTIL.h" />

@@ -79,7 +79,7 @@ bool enemy::listen(SDL_Point * nearSound)
 
 enemy::enemy(int x, int y, int type, int id)
 {
-	m_dst = { x, y, 10, 10 };
+	m_dst = { x, y, 30, 30 };
 	detectRadius = 40;
 	lookRange = 100;
 	pathTarget = { m_dst.x, m_dst.y };

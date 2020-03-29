@@ -63,10 +63,7 @@ int LevelManager::getWallNum()
 
 void LevelManager::clean()
 {
-	w_vWalls.clear();
-	w_vWalls.shrink_to_fit();
-	z_vLoad.clear();
-	z_vLoad.shrink_to_fit();
+	leaveLevel();
 	std::cout << "levelManager clean.\n";
 }
 
@@ -117,10 +114,8 @@ void LevelManager::update()
 
 void LevelManager::leaveLevel()
 {
-	w_vWalls.clear();
-	w_vWalls.shrink_to_fit();
-	z_vLoad.clear();
-	z_vLoad.shrink_to_fit();
+	cleanWalls();
+	cleanLoad();
 	std::cout << "level cleared.\n";
 }
 
@@ -170,6 +165,19 @@ void LevelManager::loadLevel(std::string level, std::string levelData)
 			}
 		}
 	}
+
+	//now we load enemies
+
+	int numenemies, x, y, type;
+
+	data >> numenemies;
+	for (int i = 0; i < numenemies; i++)
+	{
+		data >> x >> y >> type;
+		ObjectManager::getInstance().getEnemyManager()->addEnemy(x * GRID, y * GRID, type);
+		std::cout << "generateing enemy at " << x << " " << y << std::endl;
+	}
+
 	file.close();
 	data.close();
 }
@@ -182,4 +190,34 @@ bool LevelManager::getOnloadZone()
 void LevelManager::setOnloadZone(bool input)
 {
 	onLoadZone = input;
+}
+
+void LevelManager::cleanWalls()
+{
+	if (!w_vWalls.empty())
+	{
+		for (int i = 0; i < (int)w_vWalls.size(); i++)
+		{
+			delete w_vWalls[i];
+			w_vWalls[i] = nullptr;
+		}
+
+		w_vWalls.clear();
+		w_vWalls.shrink_to_fit();
+	}
+}
+
+void LevelManager::cleanLoad()
+{
+	if (!z_vLoad.empty())
+	{
+		for (int i = 0; i < (int)z_vLoad.size(); i++)
+		{
+			delete z_vLoad[i];
+			z_vLoad[i] = nullptr;
+		}
+
+		z_vLoad.clear();
+		z_vLoad.shrink_to_fit();
+	}
 }

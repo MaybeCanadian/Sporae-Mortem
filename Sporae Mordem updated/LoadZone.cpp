@@ -33,9 +33,9 @@ void LoadZone::update()
 		{
 			if (UTIL::AABBcollide(&z_dst, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()))
 			{
-				LevelStateManager::getInstance().changeLevel(nextZone);
 				setPlayerPosition(ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect());
 				LevelManager::getInstance().setOnloadZone(true);
+				LevelStateManager::getInstance().changeLevel(nextZone);
 			}
 		}
 	}

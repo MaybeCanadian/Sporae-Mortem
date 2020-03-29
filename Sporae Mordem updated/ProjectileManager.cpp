@@ -14,7 +14,7 @@ bool ProjectileManager::initManager()
 
 void ProjectileManager::clean()
 {
-	//nothing to clean yet
+	clearProjectiles();
 	std::cout << "pojectileManager clean.\n";
 }
 
@@ -53,6 +53,20 @@ void ProjectileManager::render()
 	{
 		for (int i = 0; i < (int)r_vRocks.size(); i++)
 			r_vRocks[i]->render();
+	}
+}
+
+void ProjectileManager::clearProjectiles()
+{
+	if (!r_vRocks.empty())
+	{
+		for (int i = 0; i < (int)r_vRocks.size(); i++)
+		{
+			delete r_vRocks[i];
+			r_vRocks[i] = nullptr;
+		}
+		r_vRocks.clear();
+		r_vRocks.shrink_to_fit();
 	}
 }
 

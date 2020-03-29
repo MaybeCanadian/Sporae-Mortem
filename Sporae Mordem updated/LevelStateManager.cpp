@@ -36,6 +36,7 @@ bool LevelStateManager::initManager()
 void LevelStateManager::changeLevel(int level)
 {
 	LevelManager::getInstance().leaveLevel();
+	ObjectManager::getInstance().getEnemyManager()->ClearEnemies();
 	currentLevel = level;
 	LevelManager::getInstance().loadLevel(levels[level], levelsdata[level]);
 }

@@ -60,7 +60,6 @@ void StateMenu::exit()
 	UIManager::getInstance().clearButtons();
 	LevelStateManager::getInstance().changeLevel(0);
 	ObjectManager::getInstance().getPlayerManager()->addPlayer(4*GRID, 3*GRID);
-	ObjectManager::getInstance().getEnemyManager()->addEnemy(4 * GRID, 3 * GRID, 0);
 	TextureManager::getInstance().RenderClear();
 	std::cout << "exiting Menu state.\n";
 }

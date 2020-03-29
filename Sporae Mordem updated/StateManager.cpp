@@ -49,43 +49,9 @@ int StateManager::getState()
 
 void StateManager::changeState(int input)
 {
-	switch (state)
+	if (state != input)
 	{
-	case MENU:
-		switch (input)
-		{
-			case GAME:
-			{
-				switchState(GAME);
-				break;
-			}
-		}
-		break;
-	case GAME:
-		switch (input)
-		{
-			case PAUSE:
-			{
-				switchState(PAUSE);
-				break;
-			}
-		}
-		break;
-	case PAUSE:
-		switch (input)
-		{
-			case MENU:
-			{
-				switchState(MENU);
-				break;
-			}
-			case GAME:
-			{
-				switchState(GAME);
-				break;
-			}
-		}
-		break;
+		switchState(input);
 	}
 }
 
@@ -116,6 +82,9 @@ void StateManager::update()
 	case PAUSE:
 		StatePause::getInstance().update();
 		break;
+	case SETTINGS:
+		StateSettings::getInstance().update();
+		break;
 	}
 }
 
@@ -132,6 +101,9 @@ void StateManager::render()
 	case PAUSE:
 		StatePause::getInstance().render();
 		break;
+	case SETTINGS:
+		StateSettings::getInstance().render();
+		break;
 	}
 }
 
@@ -147,6 +119,9 @@ void StateManager::handleEvents()
 		break;
 	case PAUSE:
 		StatePause::getInstance().handleEvents();
+		break;
+	case SETTINGS:
+		StateSettings::getInstance().handleEvents();
 		break;
 	}
 }

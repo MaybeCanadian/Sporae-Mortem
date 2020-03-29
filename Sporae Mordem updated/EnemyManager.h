@@ -19,6 +19,7 @@ public:
 	void addEnemy(int x, int y, int type);
 	void update();
 	void render();
+	void ClearEnemies();
 	~EnemyManager();
 };
 

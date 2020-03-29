@@ -3,6 +3,7 @@
 #define MENU 0
 #define GAME 1
 #define PAUSE 2
+#define SETTINGS 3
 //this is a virtual class
 class State
 {
@@ -20,4 +21,4 @@ public:
 #include "StateGame.h"
 #include "StateMenu.h"
 #include "StatePause.h"
-
+#include "StateSettings.h"
