@@ -60,6 +60,7 @@ void StatePause::exit()
 {
 	std::cout << "exiting Pause state.\n";
 	UIManager::getInstance().clearButtons();
+	AudioManager::getInstance().resumebgm();
 }
 
 StatePause::~StatePause()

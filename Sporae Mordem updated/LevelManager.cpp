@@ -21,7 +21,7 @@ bool LevelManager::initManager()
 	onLoadZone = false;
 	if (LevelStateManager::getInstance().initManager())
 	{
-		wallID = TextureManager::getInstance().addTexture("wall.png");
+		wallID = TextureManager::getInstance().addTexture("Image/wall.png");
 		LZsound = AudioManager::getInstance().addSound("sound/door_open_sound.mp3");
 		std::cout << "levelManager init.\n";
 		return true;
@@ -117,6 +117,7 @@ void LevelManager::leaveLevel()
 {
 	cleanWalls();
 	cleanLoad();
+	ObjectManager::getInstance().getPathFinder()->clearNodes();
 	std::cout << "level cleared.\n";
 }
 
@@ -154,19 +155,25 @@ void LevelManager::loadLevel(std::string level, std::string levelData)
 				{
 				case '0':
 					addWall(GRID * col, GRID * row, 1);
+					ObjectManager::getInstance().getPathFinder()->addNode(GRID * col, GRID * row, false);
 					break;
 				case '1':
+					ObjectManager::getInstance().getPathFinder()->addNode(GRID*col, GRID*row, true);
 					break;
 				case '2':
 					data >> datainput;
 					data >> datainput2;
 					addLoadZone(GRID * col, GRID * row, datainput, datainput2);
+					ObjectManager::getInstance().getPathFinder()->addNode(GRID*col, GRID*row, true);
 					break;
 				}
 			}
 		}
 	}
-
+	//tell pathfinder data
+	ObjectManager::getInstance().getPathFinder()->setData(gridrows, gridcols);
+	ObjectManager::getInstance().getPathFinder()->loadNeighbours();
+	
 	//now we load enemies
 
 	int numenemies, x, y, type;

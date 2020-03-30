@@ -29,8 +29,8 @@ void sounds::update()
 
 void sounds::render()
 {
-	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
-	TextureManager::getInstance().FillCircle(&position, radius);
+	/*TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
+	TextureManager::getInstance().FillCircle(&position, radius);*/
 }
 
 bool sounds::getActive()

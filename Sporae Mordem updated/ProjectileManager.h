@@ -10,6 +10,7 @@ private:
 	bool updateRock;
 	int rocktimer;
 	int rocksound1, rocksound2;
+	int rockTexture;
 public:
 	ProjectileManager();
 	bool initManager();

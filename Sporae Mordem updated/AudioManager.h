@@ -18,6 +18,7 @@ public:
 	int playSoundEX(int ID, int chanel, int loop, int time); //plays sound at id, in chanel looped lopp times, for a duration of time per loop
 	void playMusic(int);
 	void pausebgm();
+	void resumebgm();
 	bool chanelActive(int chanel);
 	void haltChanel(int chanel);
 	void fadeChanel(int chanel, int time);

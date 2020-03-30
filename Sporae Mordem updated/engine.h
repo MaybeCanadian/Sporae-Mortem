@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <unordered_map>
+
 #include "UTIL.h"
 #include "TextureManager.h"
 #include "AudioManager.h"
@@ -11,6 +13,8 @@
 #include "ObjectManager.h"
 #include "UIManager.h"
 #include "LevelManager.h"
+#include "FontManager.h"
+#include "LabelManager.h"
 
 #define WIDTH 1080
 #define HEIGHT 640
@@ -23,6 +27,8 @@ class StateManager;
 class ObjectManager;
 class UIManager;
 class LevelManager;
+class FontManager;
+class LabelManager;
 class engine
 {
 private:

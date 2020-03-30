@@ -33,6 +33,11 @@ ProjectileManager * ObjectManager::getProjectileManager()
 	return projectilemanager;
 }
 
+Pathfinder * ObjectManager::getPathFinder()
+{
+	return pathing;
+}
+
 bool ObjectManager::initManager()
 {
 	std::cout << "objectManager init.\n";
@@ -48,7 +53,12 @@ bool ObjectManager::initManager()
 				projectilemanager = new ProjectileManager();
 				if (projectilemanager->initManager())
 				{
-					return true;
+					pathing = new Pathfinder();
+					if (pathing->initManager())
+					{
+						return true;
+					}
+					else return false;
 				}
 				else return false;
 			}
@@ -65,6 +75,7 @@ void ObjectManager::clean()
 	enemymanager->clean();
 	playermanager->clean();
 	projectilemanager->clean();
+	pathing->clean();
 
 	std::cout << "objectManager clean.\n";
 }
@@ -83,6 +94,7 @@ void ObjectManager::render()
 	soundmanager->render();
 	enemymanager->render();
 	playermanager->render();
+	//pathing->render();
 }
 
 ObjectManager::~ObjectManager()

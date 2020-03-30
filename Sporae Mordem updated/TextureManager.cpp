@@ -30,6 +30,30 @@ void TextureManager::DrawEx(const int textureID, const SDL_Rect* position, const
 	SDL_RenderCopyEx(m_pRenderer, textures[textureID], area, position, rotation, centre, flip);
 }
 
+int TextureManager::addTexture(SDL_Surface* textSurface)
+{
+	SDL_Texture* textureBuffer;
+
+	textureBuffer = SDL_CreateTextureFromSurface(m_pRenderer, textSurface);
+	textures.push_back(textureBuffer);
+
+	return ((int)textures.size() - 1);
+}
+
+SDL_Point* TextureManager::getTextureSize(int id)
+{
+	int width, height;
+	SDL_QueryTexture(textures[id], NULL, NULL, &width, &height);
+	SDL_Point buffer = { width, height };
+	
+	return &buffer;
+}
+
+SDL_Texture* TextureManager::getTexture(int id)
+{
+	return textures[id];
+}
+
 void TextureManager::RenderPresent()
 {
 	SDL_RenderPresent(m_pRenderer);
