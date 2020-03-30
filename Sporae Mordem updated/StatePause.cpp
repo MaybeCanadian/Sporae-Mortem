@@ -21,6 +21,8 @@ void StatePause::render()
 	LevelManager::getInstance().render();
 	ObjectManager::getInstance().render();
 	UIManager::getInstance().renderPAUSE();
+	if (LabelManager::getInstance().getActive())
+		LabelManager::getInstance().render();
 	TextureManager::getInstance().RenderPresent();
 }
 
@@ -52,12 +54,14 @@ void StatePause::handleEvents()
 void StatePause::enter()
 {
 	std::cout << "entering Pause state.\n";
+	LabelManager::getInstance().setActive(true);
 	UIManager::getInstance().addButton(412, 200, 200, 80, 1);
 	UIManager::getInstance().addButton(412, 400, 200, 80, 4);
 }
 
 void StatePause::exit()
 {
+	LabelManager::getInstance().setActive(false);
 	std::cout << "exiting Pause state.\n";
 	UIManager::getInstance().clearButtons();
 	AudioManager::getInstance().resumebgm();

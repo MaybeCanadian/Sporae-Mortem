@@ -7,6 +7,7 @@ class LabelManager
 private:
 	LabelManager();
 	std::vector<Label*> labels;
+	bool active;
 public:
 	static LabelManager& getInstance();
 	~LabelManager();
@@ -14,5 +15,7 @@ public:
 	void clean();
 	void render();
 	void update();
+	void setActive(bool);
+	bool getActive();
 };
 

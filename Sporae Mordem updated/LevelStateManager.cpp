@@ -72,6 +72,8 @@ void LevelStateManager::changeLevel(int level)
 	ObjectManager::getInstance().getSoundManager()->clearSounds();
 	currentLevel = level;
 	LevelManager::getInstance().loadLevel(levels[level], levelsdata[level], haskey[level], hasdoor[level], unlocked);
+	if(level!=0)
+		LabelManager::getInstance().setActive(false);
 }
 
 void LevelStateManager::setHasKeyCurrent(bool input)
