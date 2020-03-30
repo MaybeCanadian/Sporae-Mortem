@@ -98,6 +98,11 @@ int AudioManager::fadeInChanel(int ID, int chanel, int loop, int time)
 	return num;
 }
 
+void AudioManager::changeVolume(int chanel, int volume)
+{
+	Mix_Volume(chanel, volume);
+}
+
 void AudioManager::clean()
 {
 	sounds.clear();

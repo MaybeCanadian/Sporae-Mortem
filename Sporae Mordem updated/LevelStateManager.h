@@ -5,9 +5,12 @@ class LevelStateManager
 {
 private:
 	int currentLevel;
-	std::string levels[4];
-	std::string levelsdata[4];
-
+	int currentZone;
+	std::string levels[5];
+	std::string levelsdata[5];
+	bool haskey[4];
+	bool hasdoor[4];
+	bool unlocked;
 private:
 	LevelStateManager();
 public:
@@ -15,6 +18,8 @@ public:
 	void clean();
 	bool initManager();
 	void changeLevel(int level);
+	void setHasKeyCurrent(bool input);
+	void setUnlocked(bool input);
 	~LevelStateManager();
 };
 

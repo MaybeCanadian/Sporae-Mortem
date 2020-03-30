@@ -5,12 +5,16 @@
 #include "PlayerManager.h"
 #include "ProjectileManager.h"
 #include "Pathfinder.h"
+#include "PickupManager.h"
+#include "LockedManager.h"
 
 class SoundManager;
 class EnemyManager;
 class PlayerManager;
 class ProjectileManager;
 class Pathfinder;
+class PickupManager;
+class LockedManager;
 class ObjectManager
 {
 private:
@@ -20,6 +24,8 @@ private:
 	PlayerManager* playermanager;
 	ProjectileManager* projectilemanager;
 	Pathfinder* pathing;
+	PickupManager* Pickups;
+	LockedManager* Locked;
 
 public:
 	static ObjectManager& getInstance();
@@ -28,6 +34,8 @@ public:
 	PlayerManager* getPlayerManager();
 	ProjectileManager* getProjectileManager();
 	Pathfinder* getPathFinder();
+	PickupManager* getPickupManager();
+	LockedManager* getLocked();
 	bool initManager();
 	void clean();
 	void update();

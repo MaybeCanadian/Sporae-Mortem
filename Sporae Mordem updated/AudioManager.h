@@ -23,6 +23,7 @@ public:
 	void haltChanel(int chanel);
 	void fadeChanel(int chanel, int time);
 	int fadeInChanel(int ID, int chanel, int loop, int time);
+	void changeVolume(int chanel, int volume);
 	void clean(); //cleans manager and dealocates memory
 	~AudioManager();
 };

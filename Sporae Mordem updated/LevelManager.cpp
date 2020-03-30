@@ -65,6 +65,7 @@ int LevelManager::getWallNum()
 void LevelManager::clean()
 {
 	leaveLevel();
+	LevelStateManager::getInstance().clean();
 	std::cout << "levelManager clean.\n";
 }
 
@@ -121,7 +122,7 @@ void LevelManager::leaveLevel()
 	std::cout << "level cleared.\n";
 }
 
-void LevelManager::loadLevel(std::string level, std::string levelData)
+void LevelManager::loadLevel(std::string level, std::string levelData, bool key, bool door, int unlocked)
 {
 	const char * buffer = level.c_str();
 	std::ifstream file(buffer);
@@ -166,27 +167,55 @@ void LevelManager::loadLevel(std::string level, std::string levelData)
 					addLoadZone(GRID * col, GRID * row, datainput, datainput2);
 					ObjectManager::getInstance().getPathFinder()->addNode(GRID*col, GRID*row, true);
 					break;
+				case '3':
+				{
+					ObjectManager::getInstance().getPathFinder()->addNode(GRID * col, GRID * row, false);
+					if (door == true)
+					{
+						if(unlocked == false)
+							ObjectManager::getInstance().getLocked()->addDoor(GRID * col, GRID * row, 1, 4);
+					}
+					else
+					{
+						addWall(GRID * col, GRID * row, 1);
+					}
+					break;
+				}
 				}
 			}
 		}
 	}
+	file.close();
+
 	//tell pathfinder data
 	ObjectManager::getInstance().getPathFinder()->setData(gridrows, gridcols);
 	ObjectManager::getInstance().getPathFinder()->loadNeighbours();
 	
 	//now we load enemies
 
-	int numenemies, x, y, type;
+	int num, x, y, type;
 
-	data >> numenemies;
-	for (int i = 0; i < numenemies; i++)
+	data >> num;
+	for (int i = 0; i < num; i++)
 	{
 		data >> x >> y >> type;
 		ObjectManager::getInstance().getEnemyManager()->addEnemy(x * GRID, y * GRID, type);
 		std::cout << "generateing enemy at " << x << " " << y << std::endl;
 	}
+	
+	//now we load key if we are told to
+	if (key == true)
+	{
+		std::cout << "key should spawn.\n";
+		data >> num;
+		for (int i = 0; i < num; i++)
+		{
+			data >> x >> y >> type;
+			ObjectManager::getInstance().getPickupManager()->addKey(x * GRID, y * GRID, type);
+		}
+	}
 
-	file.close();
+
 	data.close();
 }
 

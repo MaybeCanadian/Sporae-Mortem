@@ -12,6 +12,10 @@ private:
 	int mouseX, mouseY;
 	int TextureID, SoundID, chanel; //for assets
 
+	bool hasKey, sneaking;
+
+	int footstepcounter, footsteprad;
+
 private:
 	void keyboardmovement(); //movement for keyboard control
 	void controllermovement(); //moveent for controller not added
@@ -35,4 +39,6 @@ public:
 	void render();//This will be the render fucntion called by the engine's update functio
 	void respawn(); //respawns at last spawn point
 	void setPos(int x, int y);
+	void setHasKey(bool input);
+	bool getHadKey();
 };

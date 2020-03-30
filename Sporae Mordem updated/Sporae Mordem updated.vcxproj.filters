@@ -61,6 +61,15 @@
     <Filter Include="Managers\UI\Labels">
       <UniqueIdentifier>{0df97ae8-9804-4b62-9ba1-320b6b431639}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Objects\Objects\Pickups">
+      <UniqueIdentifier>{7d9859a8-eff8-4b97-b362-a2eacd8a575e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Pickups\Keys">
+      <UniqueIdentifier>{263732fa-fae4-43b1-85dd-f13e879d901c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Locked">
+      <UniqueIdentifier>{a98d05e2-d4f9-4316-a1e1-465b8f8280a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -174,6 +183,18 @@
     <ClCompile Include="LabelManager.cpp">
       <Filter>Managers\UI\Labels</Filter>
     </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Managers\Objects\Objects\Pickups\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="PickupManager.cpp">
+      <Filter>Managers\Objects\Objects\Pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClCompile>
+    <ClCompile Include="LockedManager.cpp">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -286,6 +307,18 @@
     </ClInclude>
     <ClInclude Include="LabelManager.h">
       <Filter>Managers\UI\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Managers\Objects\Objects\Pickups\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupManager.h">
+      <Filter>Managers\Objects\Objects\Pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClInclude>
+    <ClInclude Include="LockedManager.h">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
