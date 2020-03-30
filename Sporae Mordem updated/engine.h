@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <time.h>
 #include <unordered_map>
 
 #include "UTIL.h"

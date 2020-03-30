@@ -38,6 +38,16 @@ Pathfinder * ObjectManager::getPathFinder()
 	return pathing;
 }
 
+PickupManager * ObjectManager::getPickupManager()
+{
+	return Pickups;
+}
+
+LockedManager * ObjectManager::getLocked()
+{
+	return Locked;
+}
+
 bool ObjectManager::initManager()
 {
 	std::cout << "objectManager init.\n";
@@ -56,7 +66,17 @@ bool ObjectManager::initManager()
 					pathing = new Pathfinder();
 					if (pathing->initManager())
 					{
-						return true;
+						Pickups = new PickupManager();
+						if (Pickups->initManager())
+						{
+							Locked = new LockedManager();
+							if (Locked->initManager())
+							{
+								return true;
+							}
+							else return false;
+						}
+						else return false;
 					}
 					else return false;
 				}
@@ -76,16 +96,20 @@ void ObjectManager::clean()
 	playermanager->clean();
 	projectilemanager->clean();
 	pathing->clean();
+	Pickups->clean();
+	Locked->clean();
 
 	std::cout << "objectManager clean.\n";
 }
 
 void ObjectManager::update()
 {	
+	projectilemanager->update();
 	playermanager->update();
 	enemymanager->update();
 	soundmanager->update();
-	projectilemanager->update();
+	Pickups->update();
+	Locked->update();
 }
 
 void ObjectManager::render()
@@ -94,7 +118,9 @@ void ObjectManager::render()
 	soundmanager->render();
 	enemymanager->render();
 	playermanager->render();
-	//pathing->render();
+	Pickups->render();
+	Locked->render();
+	//pathing->render(); this was for testing purposes
 }
 
 ObjectManager::~ObjectManager()

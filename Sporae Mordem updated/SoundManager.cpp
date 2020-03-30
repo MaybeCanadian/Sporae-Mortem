@@ -66,6 +66,21 @@ void SoundManager::render()
 	}
 }
 
+void SoundManager::clearSounds()
+{
+	if (!s_vSounds.empty())
+	{
+		for (int i = 0; i < (int)s_vSounds.size(); i++)
+		{
+			delete s_vSounds[i];
+			s_vSounds[i] = nullptr;
+		}
+
+		s_vSounds.clear();
+		s_vSounds.shrink_to_fit();
+	}
+}
+
 bool SoundManager::initManager()
 {
 	//nothing to init right now

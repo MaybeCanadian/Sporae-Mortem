@@ -2,69 +2,30 @@
 
 bool enemy::look(SDL_Point * nearPlayer)
 {
-	SDL_Point Startbuffer = { m_dst.x + m_dst.w / 2, m_dst.y + m_dst.h / 2 };
-	double rot = rotation * 180 / 3.14;
-	double neardistance = 100000;
-	bool see = false;
-	double arcs[18];
-	for (int i = 0; i < 18; i++)
-	{
-		arcs[i] = rot - 45 + 5 * i;
-		if (arcs[i] < 0)
-		{
-			arcs[i] = 360 + arcs[i];
-		}
-		else if (arcs[i] >= 360)
-		{
-			arcs[i] = arcs[i] - 360;
-		}
-
-		arcs[i] = arcs[i] * 3.14 / 180;
-	}
-
 	for (int i = 0; i < ObjectManager::getInstance().getPlayerManager()->getNumPlayers(); i++)
 	{
-		for (int j = 0; j < 18; j++)
+		if (UTIL::distanceRect(ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect(), &m_dst) < lookRange)
 		{
-			SDL_Point endBuffer = { Startbuffer.x + lookRange * cos(arcs[j]), Startbuffer.y + lookRange * cos(arcs[j]) };
-			SDL_Point rectStart = { ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x,  ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y };
-			if (UTIL::lineRectCheck(Startbuffer, endBuffer, rectStart, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->w, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->h))
+			SDL_Point buffer1 = { ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y };
+			SDL_Point buffer2 = { m_dst.x, m_dst.y };
+			int rot = UTIL::Rotation(&buffer1, &buffer2);
+
+			int lookbound1 = rotation + 30; 
+			int lookbound2 = rotation - 30;
+			if (lookbound1 > 360)
+				lookbound1 = lookbound1 - 360;
+			if (lookbound2 < 0)
+				lookbound2 = lookbound2 + 360;
+
+			if (!(rot > lookbound1 || rot < lookbound2))
 			{
-				bool blocked = false;
-				//at this point weve seen a playing, now we see if there is an interescting wall that is closer
-				double distance = UTIL::distancePoint(&Startbuffer, &rectStart);
-				for (int k = 0; k < (int)LevelManager::getInstance().getWallNum(); k++)
-				{
-					SDL_Point wallBuffer = { LevelManager::getInstance().getWall(k)->getRect()->x + LevelManager::getInstance().getWall(k)->getRect()->w,
-						LevelManager::getInstance().getWall(k)->getRect()->y + LevelManager::getInstance().getWall(k)->getRect()->h };
-
-					double walldist = UTIL::distancePoint(&Startbuffer, &wallBuffer);
-					if (walldist < distance)
-					{
-						SDL_Point wallstartbuffer = { LevelManager::getInstance().getWall(k)->getRect()->x, LevelManager::getInstance().getWall(k)->getRect()->y };
-						if (UTIL::lineRectCheck(Startbuffer, endBuffer, wallstartbuffer, LevelManager::getInstance().getWall(k)->getRect()->w, LevelManager::getInstance().getWall(k)->getRect()->h))
-						{
-							blocked = true;
-						}
-					}
-				}
-
-				//afte checking all walls
-				if (blocked == false)
-				{
-					//seen player
-					if (distance < neardistance)
-					{
-						*nearPlayer = { ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y };
-						if (see == false)
-							see = true;
-					}
-				}
+				nearPlayer->x = buffer1.x;
+				nearPlayer->y = buffer2.y;
+				return true;
 			}
 		}
 	}
-
-	return see;
+	return false;
 }
 
 bool enemy::listen(SDL_Point * nearSound)
@@ -86,6 +47,7 @@ enemy::enemy(int x, int y, int type, int id)
 	pathtarget = nullptr;
 	moving = false;
 	target = false;
+	rotation = 90;
 }
 
 void enemy::update()
@@ -101,6 +63,10 @@ void enemy::update()
 		}
 		else
 			target = false;
+	}
+	if (look(&nearPlayer))
+	{
+		std::cout << "see Player.\n";
 	}
 	if (target)
 	{

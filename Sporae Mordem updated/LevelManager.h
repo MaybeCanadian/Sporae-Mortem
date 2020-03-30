@@ -37,7 +37,7 @@ public:
 	void render();
 	void update();
 	void leaveLevel();
-	void loadLevel(std::string level, std::string levelData);
+	void loadLevel(std::string level, std::string levelData, bool key, bool door, int unlocked);
 
 	bool getOnloadZone();
 	void setOnloadZone(bool input);

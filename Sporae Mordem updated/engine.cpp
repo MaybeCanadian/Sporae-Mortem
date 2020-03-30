@@ -86,6 +86,8 @@ void engine::clean()
 	UIManager::getInstance().clean();
 	std::cout << std::endl;
 	LabelManager::getInstance().clean();
+	std::cout << std::endl;
+	LevelManager::getInstance().clean();
 }
 
 

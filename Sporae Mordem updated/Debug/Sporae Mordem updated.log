@@ -1,7 +1,10 @@
-﻿  FontManager.cpp
+﻿  enemy.cpp
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\util.h(85): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\fontmanager.cpp(82): warning C4551: function call missing argument list
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\enemy.cpp(109): warning C4715: 'enemy::followpath': not all control paths return a value
   Sporae Mordem updated.vcxproj -> C:\Users\ecoff\source\repos\Sporae Mordem updated\Debug\Sporae Mordem updated.exe
