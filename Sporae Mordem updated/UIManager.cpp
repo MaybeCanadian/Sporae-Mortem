@@ -26,28 +26,28 @@ bool UIManager::initManager()
 	buttonTextureID[2] = TextureManager::getInstance().addTexture("Image/Play.png"); //add file name
 	buttonTextureID[3] = TextureManager::getInstance().addTexture("Image/exit.png"); //add file name
 	buttonTextureID[4] = TextureManager::getInstance().addTexture("Image/menu.png"); //add file name
-	backgroundID = TextureManager::getInstance().addTexture("floor.png");
+	backgroundID[0] = TextureManager::getInstance().addTexture("Image/startscreen.png");
+	backgroundID[1] = TextureManager::getInstance().addTexture("floor.png");
 	std::cout << "uimanager init.\n";
 	return true;
 }
 
 void UIManager::renderPAUSE()
 {
-	TextureManager::getInstance().SetDrawColor(0, 0, 255, 255);
+	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
 	TextureManager::getInstance().FillRect(NULL);
 	renderButtons();
 }
 
 void UIManager::rednerMENU()
 {
-	TextureManager::getInstance().SetDrawColor(255, 0, 0, 255);
-	TextureManager::getInstance().FillRect(NULL);
+	TextureManager::getInstance().Draw(backgroundID[0], NULL, NULL);
 	renderButtons();
 }
 
 void UIManager::renderGAME()
 {
-	TextureManager::getInstance().Draw(backgroundID, NULL, NULL);
+	TextureManager::getInstance().Draw(backgroundID[1], NULL, NULL);
 }
 
 void UIManager::clean()

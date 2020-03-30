@@ -19,6 +19,7 @@ bool AudioManager::initManager()
 		Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 8192);
 		Mix_AllocateChannels(32);
 		bgm = Mix_LoadMUS("sound/bg.mp3");
+		bgm2= Mix_LoadMUS("sound/Troops.mp3");
 		Mix_Volume(0, MIX_MAX_VOLUME / 2);
 		std::cout << "audioManager init.\n";
 		return true;
@@ -57,9 +58,12 @@ int AudioManager::playSoundEX(int ID, int chanel, int loop, int time)
 	return num;
 }
 
-void AudioManager::playMusic()
+void AudioManager::playMusic(int bg)
 {
-	Mix_PlayMusic(bgm, -1);
+	if(bg==0)
+		Mix_PlayMusic(bgm, -1);
+	if (bg == 1)
+		Mix_PlayMusic(bgm2, -1);
 }
 
 void AudioManager::pausebgm()
