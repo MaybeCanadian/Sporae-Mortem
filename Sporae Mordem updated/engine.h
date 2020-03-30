@@ -11,6 +11,8 @@
 #include "ObjectManager.h"
 #include "UIManager.h"
 #include "LevelManager.h"
+#include "FontManager.h"
+#include "LabelManager.h"
 
 #define WIDTH 1080
 #define HEIGHT 640

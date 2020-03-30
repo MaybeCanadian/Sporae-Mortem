@@ -29,6 +29,11 @@ bool engine::init(const char * title, int xpos, int ypos, int width, int height,
 								if (LevelManager::getInstance().initManager())
 								{
 									std::cout << std::endl;
+									if (LabelManager::getInstance().initManager())
+									{
+										std::cout << std::endl;
+									}
+									else return false;
 								}
 								else return false;
 							}
@@ -76,6 +81,8 @@ void engine::clean()
 	InputManager::getInstance().clean();
 	std::cout << std::endl;
 	UIManager::getInstance().clean();
+	std::cout << std::endl;
+	LabelManager::getInstance().clean();
 }
 
 

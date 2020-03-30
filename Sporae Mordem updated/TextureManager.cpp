@@ -80,6 +80,31 @@ int TextureManager::addTexture(std::string texture)
 	return ((int)textures.size() - 1);
 }
 
+int TextureManager::addTexture(SDL_Surface* textSurface)
+{
+	SDL_Texture* textureBuffer;
+	textureBuffer = SDL_CreateTextureFromSurface(m_pRenderer, textSurface);
+	textures.push_back(textureBuffer);
+	return ((int)textures.size() - 1);
+}
+
+std::vector<int> TextureManager::getTextureSize(int id)
+{
+	int width, height;
+	SDL_QueryTexture(textures[id], NULL, NULL, &width, &height);
+	std::vector<int> size;
+
+	size[0] = width;
+	size[1] = height;
+
+	return size;
+}
+
+SDL_Texture* TextureManager::getTexture(int id)
+{
+	return textures[id];
+}
+
 bool TextureManager::initManager(const char * title, int xpos, int ypos, int width, int height, int flags)
 {
 	m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
