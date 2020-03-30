@@ -62,13 +62,18 @@ void AudioManager::playMusic(int bg)
 {
 	if(bg==0)
 		Mix_PlayMusic(bgm, -1);
-	if (bg == 1)
+	else if (bg == 1)
 		Mix_PlayMusic(bgm2, -1);
 }
 
 void AudioManager::pausebgm()
 {
 	Mix_PauseMusic();
+}
+
+void AudioManager::resumebgm()
+{
+		Mix_ResumeMusic();
 }
 
 bool AudioManager::chanelActive(int chanel)

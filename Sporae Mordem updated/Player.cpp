@@ -165,7 +165,6 @@ void Player::playSound()
 	}
 	else
 	{
-		std::cout << "chanel was -1\n";
 		chanel = AudioManager::getInstance().playSound(SoundID, -1, -1);
 	}
 }

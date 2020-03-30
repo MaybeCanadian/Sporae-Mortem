@@ -22,6 +22,7 @@ void StateGame::render()
 	UIManager::getInstance().renderGAME();
 	LevelManager::getInstance().render();
 	ObjectManager::getInstance().render();
+	LabelManager::getInstance().render();
 	TextureManager::getInstance().RenderPresent();
 }
 

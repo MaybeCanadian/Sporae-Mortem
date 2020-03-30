@@ -10,7 +10,7 @@ private:
 public:
 	SoundManager();
 	void soundsCreate(int x, int y, int radius, int duration); //adds a new sound at the point with a certain radius
-	bool DetectSounds(double radius, SDL_Rect* position, SDL_Point* nearest); //checks all sounds, returns if it heard any and stores the nearest sound in nearest, nothing happens if none detected
+	bool DetectSounds(SDL_Rect* position, SDL_Point* nearest); //checks all sounds, returns if it heard any and stores the nearest sound in nearest, nothing happens if none detected
 	void update(); //updates the sounds
 	void render();
 	bool initManager(); //inits the manager

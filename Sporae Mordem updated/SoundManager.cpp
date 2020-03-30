@@ -9,7 +9,7 @@ void SoundManager::soundsCreate(int x, int y, int radius, int duration)
 	s_vSounds.push_back(new sounds(x, y, radius, duration));
 }
 
-bool SoundManager::DetectSounds(double radius, SDL_Rect * position, SDL_Point * nearest)
+bool SoundManager::DetectSounds(SDL_Rect * position, SDL_Point * nearest)
 {
 	SDL_Point buffer;
 	int near = -1;
@@ -18,7 +18,7 @@ bool SoundManager::DetectSounds(double radius, SDL_Rect * position, SDL_Point * 
 	buffer.y = position->y + position->h / 2;
 	for (int i = 0; i < (int)s_vSounds.size(); i++) //check through all sounds
 	{
-		if (UTIL::CircleCollide(&buffer, radius, s_vSounds[i]->getPos(), s_vSounds[i]->getRadius()))
+		if (UTIL::CircleCollide(&buffer, position->w, s_vSounds[i]->getPos(), s_vSounds[i]->getRadius()))
 		{
 			if (UTIL::distancePoint(&buffer, s_vSounds[i]->getPos()) < neardist)
 			{

@@ -27,7 +27,7 @@ bool UIManager::initManager()
 	buttonTextureID[3] = TextureManager::getInstance().addTexture("Image/exit.png"); //add file name
 	buttonTextureID[4] = TextureManager::getInstance().addTexture("Image/menu.png"); //add file name
 	backgroundID[0] = TextureManager::getInstance().addTexture("Image/startscreen.png");
-	backgroundID[1] = TextureManager::getInstance().addTexture("floor.png");
+	backgroundID[1] = TextureManager::getInstance().addTexture("Image/floor.png");
 	std::cout << "uimanager init.\n";
 	return true;
 }

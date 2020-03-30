@@ -106,4 +106,44 @@ public:
 		}
 		return false;
 	}
+
+	static double Trunacate(double value1, double value2)
+	{
+		if (value1 < value2)
+			return value1;
+		else
+			return value2;
+	}
+
+	static double Trunacate(int value1, double value2)
+	{
+		if (value1 < value2)
+			return value1;
+		else
+			return value2;
+	}
+
+	static double Trunacate(double value1, int value2)
+	{
+		if (value1 < value2)
+			return value1;
+		else
+			return value2;
+	}
+
+	static int Trunacate(int value1, int value2)
+	{
+		if (value1 < value2)
+			return value1;
+		else
+			return value2;
+	}
+
+	static int limit(int value, int limiter)
+	{
+		if (value < limiter)
+			return limiter;
+		else
+			return value;
+	}
 };

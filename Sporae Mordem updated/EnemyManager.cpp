@@ -4,7 +4,7 @@
 
 void EnemyManager::loadTextures()
 {
-	EnemyID = TextureManager::getInstance().addTexture("zombie.png");
+	EnemyID = TextureManager::getInstance().addTexture("Image/zombie.png");
 }
 
 EnemyManager::EnemyManager()

@@ -16,6 +16,9 @@ private:
 public:
 	~TextureManager();
 	static TextureManager& getInstance();
+	int addTexture(SDL_Surface*);
+	SDL_Point* getTextureSize(int id);
+	SDL_Texture* getTexture(int id);
 	int addTexture(std::string texture); //loads the texture to the vector and returns the id the texture is stored at
 	bool initManager(const char* title, int xpos, int ypos, int width, int height, int flags);
 	void clean();

@@ -52,6 +52,15 @@
     <Filter Include="Managers\UI\Buttons">
       <UniqueIdentifier>{0fa5eecd-adad-4de9-ac1f-13ea16b5a5dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Objects\Pathfinding">
+      <UniqueIdentifier>{1b2e3f70-f6f5-48fa-adcd-afc4e17bbeb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI\Fonts">
+      <UniqueIdentifier>{6e98b845-897e-4df6-a3d0-7dc79dab60c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI\Labels">
+      <UniqueIdentifier>{0df97ae8-9804-4b62-9ba1-320b6b431639}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,6 +159,21 @@
     <ClCompile Include="StateSettings.cpp">
       <Filter>Managers\StateMachine\States</Filter>
     </ClCompile>
+    <ClCompile Include="Pathfinder.cpp">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Managers\UI\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="LabelManager.cpp">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -247,6 +271,21 @@
     </ClInclude>
     <ClInclude Include="StateSettings.h">
       <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathfinder.h">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Managers\UI\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelManager.h">
+      <Filter>Managers\UI\Labels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

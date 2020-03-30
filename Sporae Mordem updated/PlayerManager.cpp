@@ -4,7 +4,7 @@
 
 void PlayerManager::loadAssets()
 {
-	playerID = TextureManager::getInstance().addTexture("prisoner.png");
+	playerID = TextureManager::getInstance().addTexture("Image/prisoner.png");
 	walkID = AudioManager::getInstance().addSound("sound/Run.mp3");
 }
 
