@@ -9,9 +9,10 @@ private:
 	std::vector<Player*> p_vPlayers;
 	int numPlayers;
 	int playerID;
+	int walkID;
 
 private:
-	void loadTextures();
+	void loadAssets();
 
 public:
 	PlayerManager();

@@ -7,8 +7,9 @@ private:
 	int nextZone;
 	bool on;
 	int wall;
+	int sound;
 public:
-	LoadZone(int x, int y, int in, int in2);
+	LoadZone(int x, int y, int in, int in2, int soundID);
 	~LoadZone();
 	int getNext();
 	void render();

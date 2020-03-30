@@ -6,11 +6,11 @@ class Player
 private:
 	bool m_active;
 	SDL_Rect m_dst, future;
-	int control_type, textureID, speed;
+	int control_type, textureID, speed; //for movement controls
 	SDL_Scancode keybinds[4]; //up, down, left, right
 	double rotation;
 	int mouseX, mouseY;
-	int TextureID;
+	int TextureID, SoundID, chanel; //for assets
 
 private:
 	void keyboardmovement(); //movement for keyboard control
@@ -20,9 +20,11 @@ private:
 	void moveRIGHT(); //move right
 	void moveLEFT(); //move left
 	void mouseAttack();
+	void playSound();
+	void stopSound();
 
 public:
-	Player(int x, int y, int type, int id);
+	Player(int x, int y, int type, int id, int sound);
 	~Player();
 	void setControlType(int); //sets control type between keyboard and controller
 	void setKeybinds(SDL_Scancode*); //sets the binds to the input

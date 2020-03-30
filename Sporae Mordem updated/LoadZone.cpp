@@ -2,12 +2,13 @@
 
 
 
-LoadZone::LoadZone(int x, int y, int in, int in2)
+LoadZone::LoadZone(int x, int y, int in, int in2, int soundID)
 {
 	z_dst = { x, y, GRID, GRID };
 	nextZone = in;
 	std::cout << "making loadzone to zone " << nextZone << std::endl;
 	wall = in2;
+	sound = soundID;
 }
 
 LoadZone::~LoadZone()
@@ -33,6 +34,7 @@ void LoadZone::update()
 		{
 			if (UTIL::AABBcollide(&z_dst, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()))
 			{
+				AudioManager::getInstance().playSound(sound, -1, 0);
 				setPlayerPosition(ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect());
 				LevelManager::getInstance().setOnloadZone(true);
 				LevelStateManager::getInstance().changeLevel(nextZone);

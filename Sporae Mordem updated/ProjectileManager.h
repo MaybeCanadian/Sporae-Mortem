@@ -9,6 +9,7 @@ private:
 	std::vector<Rock*> r_vRocks;
 	bool updateRock;
 	int rocktimer;
+	int rocksound1, rocksound2;
 public:
 	ProjectileManager();
 	bool initManager();

@@ -52,12 +52,13 @@ void StateGame::handleEvents()
 
 void StateGame::enter()
 {
+	AudioManager::getInstance().playMusic();
 	std::cout << "entering Game state.\n";
 }
 
 void StateGame::exit()
 {
-
+	AudioManager::getInstance().pausebgm();
 	TextureManager::getInstance().RenderClear();
 	std::cout << "exiting Game state.\n";
 }

@@ -18,11 +18,7 @@ bool AudioManager::initManager()
 	{
 		Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 8192);
 		Mix_AllocateChannels(32);
-		soundChunkID[0]=addSound("sound/bg.mp3");
-		soundChunkID[1]=addSound("sound/catch.mp3");
-		soundChunkID[2]=addSound("sound/door_open_sound.mp3");
-		soundChunkID[3]=addSound("sound/Run.mp3");
-		soundChunkID[4]=addSound("sound/stone.mp3");
+		bgm = Mix_LoadMUS("sound/bg.mp3");
 		Mix_Volume(0, MIX_MAX_VOLUME / 2);
 		std::cout << "audioManager init.\n";
 		return true;
@@ -46,9 +42,51 @@ int AudioManager::addSound(std::string input)
 	return (int)sounds.size() - 1;
 }
 
-void AudioManager::playSound(int ID, int chanel, int loop)
+int AudioManager::playSound(int ID, int chanel, int loop)
 {
-	Mix_PlayChannel(chanel, sounds[ID], loop);
+	int num;
+	num = Mix_PlayChannel(chanel, sounds[ID], loop);
+	return num;
+}
+
+int AudioManager::playSoundEX(int ID, int chanel, int loop, int time)
+{
+	int num;
+	num = Mix_PlayChannelTimed(chanel, sounds[ID], loop, time);
+	std::cout << "test" << std::endl;
+	return num;
+}
+
+void AudioManager::playMusic()
+{
+	Mix_PlayMusic(bgm, -1);
+}
+
+void AudioManager::pausebgm()
+{
+	Mix_PauseMusic();
+}
+
+bool AudioManager::chanelActive(int chanel)
+{
+	return Mix_Playing(chanel);
+}
+
+void AudioManager::haltChanel(int chanel)
+{
+	Mix_HaltChannel(chanel);
+}
+
+void AudioManager::fadeChanel(int chanel, int time)
+{
+	Mix_FadeOutChannel(chanel, time);
+}
+
+int AudioManager::fadeInChanel(int ID, int chanel, int loop, int time)
+{
+	int num;
+	num = Mix_FadeInChannel(chanel, sounds[ID], loop, time);
+	return num;
 }
 
 void AudioManager::clean()

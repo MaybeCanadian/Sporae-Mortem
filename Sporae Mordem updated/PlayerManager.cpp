@@ -2,9 +2,10 @@
 
 
 
-void PlayerManager::loadTextures()
+void PlayerManager::loadAssets()
 {
 	playerID = TextureManager::getInstance().addTexture("prisoner.png");
+	walkID = AudioManager::getInstance().addSound("sound/Run.mp3");
 }
 
 PlayerManager::PlayerManager()
@@ -14,7 +15,7 @@ PlayerManager::PlayerManager()
 bool PlayerManager::initManager()
 {
 	//nothing to init yet
-	loadTextures();
+	loadAssets();
 	numPlayers = 0;
 	std::cout << "playerManager init.\n";
 	return true;
@@ -28,7 +29,7 @@ void PlayerManager::clean()
 
 void PlayerManager::addPlayer(int x, int y)
 {
-	p_vPlayers.push_back(new Player(x, y, (int)p_vPlayers.size(), playerID));
+	p_vPlayers.push_back(new Player(x, y, (int)p_vPlayers.size(), playerID, walkID));
 	numPlayers++;
 }
 

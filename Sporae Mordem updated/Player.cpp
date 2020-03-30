@@ -2,9 +2,9 @@
 
 void Player::keyboardmovement()
 {
+	
 	if (InputManager::getInstance().KeyDown(keybinds[0]))
 	{
-		//AudioManager::getInstance().playSound(3, -1, 0);
 		moveUP();
 	}
 	if (InputManager::getInstance().KeyDown(keybinds[1]))
@@ -19,13 +19,18 @@ void Player::keyboardmovement()
 	{
 		moveRIGHT();
 	}
+
+	if (!(InputManager::getInstance().KeyDown(keybinds[0]) || InputManager::getInstance().KeyDown(keybinds[1]) || InputManager::getInstance().KeyDown(keybinds[2]) || InputManager::getInstance().KeyDown(keybinds[3])))
+	{
+		stopSound();
+	}
 }
 
 void Player::controllermovement()
 {
 }
 
-Player::Player(int x, int y, int type, int id)
+Player::Player(int x, int y, int type, int id, int sound)
 {
 	m_dst.x = x;
 	m_dst.y = y;
@@ -37,6 +42,8 @@ Player::Player(int x, int y, int type, int id)
 	speed = 5;
 	SDL_WarpMouseInWindow(NULL, 0, 0);
 	TextureID = id;
+	SoundID = sound;
+	chanel = -1;
 }
 
 Player::~Player()
@@ -112,7 +119,10 @@ void Player::moveUP()
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.y -= speed;
 	if (!LevelManager::getInstance().checkWallNear(&future) && future.y > 0)
+	{
 		m_dst.y -= speed;
+		playSound();
+	}
 }
 
 void Player::moveDOWN()
@@ -120,7 +130,10 @@ void Player::moveDOWN()
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.y += speed;
 	if (!LevelManager::getInstance().checkWallNear(&future) && future.y < HEIGHT)
+	{
 		m_dst.y += speed;
+		playSound();
+	}
 }
 
 void Player::moveLEFT()
@@ -128,7 +141,10 @@ void Player::moveLEFT()
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.x -= speed;
 	if (!LevelManager::getInstance().checkWallNear(&future) && future.x > 0)
+	{
 		m_dst.x -= speed;
+		playSound();
+	}
 }
 
 void Player::mouseAttack()
@@ -138,12 +154,42 @@ void Player::mouseAttack()
 		ObjectManager::getInstance().getProjectileManager()->addRock(m_dst.x, m_dst.y, rotation);
 }
 
+void Player::playSound()
+{
+	if (chanel != -1)
+	{
+		if (!AudioManager::getInstance().chanelActive(chanel))
+		{
+			chanel = AudioManager::getInstance().playSound(SoundID, -1, -1);
+		}
+	}
+	else
+	{
+		std::cout << "chanel was -1\n";
+		chanel = AudioManager::getInstance().playSound(SoundID, -1, -1);
+	}
+}
+
+void Player::stopSound()
+{
+	if (chanel != -1)
+	{
+		if (AudioManager::getInstance().chanelActive(chanel))
+		{
+			AudioManager::getInstance().fadeChanel(chanel, 200);
+		}
+	}
+}
+
 void Player::moveRIGHT()
 {
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	future.x += speed;
 	if (!LevelManager::getInstance().checkWallNear(&future) && future.x < WIDTH)
+	{
 		m_dst.x += speed;
+		playSound();
+	}
 }
 
 

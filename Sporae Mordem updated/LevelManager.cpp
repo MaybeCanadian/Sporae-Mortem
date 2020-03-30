@@ -22,6 +22,7 @@ bool LevelManager::initManager()
 	if (LevelStateManager::getInstance().initManager())
 	{
 		wallID = TextureManager::getInstance().addTexture("wall.png");
+		LZsound = AudioManager::getInstance().addSound("sound/door_open_sound.mp3");
 		std::cout << "levelManager init.\n";
 		return true;
 	}
@@ -35,7 +36,7 @@ void LevelManager::addWall(int x, int y, int type)
 
 void LevelManager::addLoadZone(int x, int y, int newZone, int wall)
 {
-	z_vLoad.push_back(new LoadZone(x, y, newZone, wall));
+	z_vLoad.push_back(new LoadZone(x, y, newZone, wall, LZsound));
 }
 
 bool LevelManager::checkWallNear(SDL_Rect * pos)

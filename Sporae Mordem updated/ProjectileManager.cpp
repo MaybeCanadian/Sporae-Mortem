@@ -9,6 +9,8 @@ ProjectileManager::ProjectileManager()
 bool ProjectileManager::initManager()
 {
 	std::cout << "projectileManager init.\n";
+	rocksound1 = AudioManager::getInstance().addSound("sound/catch.mp3");
+	rocksound2 = AudioManager::getInstance().addSound("sound/stone.mp3");
 	return true;
 }
 
@@ -20,7 +22,7 @@ void ProjectileManager::clean()
 
 void ProjectileManager::addRock(int x, int y, double rotation)
 {
-	r_vRocks.push_back(new Rock(x, y, rotation));
+	r_vRocks.push_back(new Rock(x, y, rotation, rocksound1, rocksound2wa));
 }
 
 void ProjectileManager::update()

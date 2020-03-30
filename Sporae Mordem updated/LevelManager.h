@@ -18,6 +18,7 @@ private:
 	std::vector<LoadZone*> z_vLoad;
 	int wallID;
 	bool onLoadZone;
+	int LZsound;
 
 private:
 	void cleanWalls();
