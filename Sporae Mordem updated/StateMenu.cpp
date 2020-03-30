@@ -50,6 +50,7 @@ void StateMenu::render()
 
 void StateMenu::enter()
 {
+	AudioManager::getInstance().playMusic(1);
 	UIManager::getInstance().addButton(312, 100, 400, 100, 2);
 	UIManager::getInstance().addButton(312, 300, 400, 100, 3);
 	std::cout << "entering Menu State.\n";

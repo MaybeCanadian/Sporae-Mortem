@@ -52,7 +52,7 @@ void StateGame::handleEvents()
 
 void StateGame::enter()
 {
-	AudioManager::getInstance().playMusic();
+	AudioManager::getInstance().playMusic(0);
 	std::cout << "entering Game state.\n";
 }
 
