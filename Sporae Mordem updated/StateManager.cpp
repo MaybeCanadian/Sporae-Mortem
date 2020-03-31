@@ -17,6 +17,9 @@ void StateManager::switchState(int newState)
 	case PAUSE:
 		StatePause::getInstance().exit();
 		break;
+	case LOSE:
+		StateLose::getInstance().exit();
+		break;
 	}
 
 	state = newState;
@@ -31,6 +34,9 @@ void StateManager::switchState(int newState)
 		break;
 	case PAUSE:
 		StatePause::getInstance().enter();
+		break;
+	case LOSE:
+		StateLose::getInstance().enter();
 		break;
 	}
 }
@@ -85,6 +91,9 @@ void StateManager::update()
 	case SETTINGS:
 		StateSettings::getInstance().update();
 		break;
+	case LOSE:
+		StateLose::getInstance().update();
+		break;
 	}
 }
 
@@ -104,6 +113,8 @@ void StateManager::render()
 	case SETTINGS:
 		StateSettings::getInstance().render();
 		break;
+	case LOSE:
+		StateLose::getInstance().render();
 	}
 }
 
@@ -122,6 +133,9 @@ void StateManager::handleEvents()
 		break;
 	case SETTINGS:
 		StateSettings::getInstance().handleEvents();
+		break;
+	case LOSE:
+		StateLose::getInstance().handleEvents();
 		break;
 	}
 }

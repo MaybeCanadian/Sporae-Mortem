@@ -195,6 +195,9 @@
     <ClCompile Include="LockedManager.cpp">
       <Filter>Managers\Objects\Objects\Locked</Filter>
     </ClCompile>
+    <ClCompile Include="StateLose.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -319,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="LockedManager.h">
       <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClInclude>
+    <ClInclude Include="StateLose.h">
+      <Filter>Managers\StateMachine\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

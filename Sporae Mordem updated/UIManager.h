@@ -9,7 +9,7 @@ private:
 	UIManager();
 	std::vector<button*> ui_vButtons;
 	int buttonTextureID[5];
-	int backgroundID[2];
+	int backgroundID[3];
 
 private:
 	void renderButtons();
@@ -20,6 +20,7 @@ public:
 	void renderPAUSE(); //renders ui used in pause screen
 	void rednerMENU(); //renders ui used in menu screen
 	void renderGAME(); //renders ui used in game screen
+	void renderLOSE(); //renders the lose screen
 	void clean();
 	void update();
 	void addButton(int x, int y, int w, int h, int type); //0 is pause, 1 is resume, 2 is play, 3 is exit, 4 is menu

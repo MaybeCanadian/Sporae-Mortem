@@ -1,13 +1,7 @@
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\vc141.pdb
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\vc141.idb
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\player.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\enemymanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\resumebutton.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\exitbutton.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\loadzone.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\levelmanager.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\levelstatemanager.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\objectmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\projectilemanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\audiomanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\statepause.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\statemenu.obj
@@ -16,12 +10,19 @@ c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\st
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\state.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\soundmanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\rock.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\projectilemanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\playermanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\player.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\playbutton.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\objectmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\loadzone.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\levelstatemanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\levelmanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\inputmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\exitbutton.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\enemymanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\wall.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\sounds.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\settingsbutton.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\pausebutton.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\menubutton.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\main.obj
@@ -30,10 +31,18 @@ c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\en
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\button.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\uimanager.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\texturemanager.obj
-c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\settingsbutton.obj
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\statesettings.obj
-c:\users\ecoff\source\repos\sporae mordem updated\debug\sporae mordem updated.exe
-c:\users\ecoff\source\repos\sporae mordem updated\debug\sporae mordem updated.ilk
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\pathfinder.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\node.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\labelmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\fontmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\label.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\pickupmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\key.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\lockedmanager.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\door.obj
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\sporae mordem updated.ilk
+c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\sporae mordem updated.pdb
 c:\users\ecoff\source\repos\sporae mordem updated\debug\sporae mordem updated.pdb
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\sporae m.035fe085.tlog\cl.command.1.tlog
 c:\users\ecoff\source\repos\sporae mordem updated\sporae mordem updated\debug\sporae m.035fe085.tlog\cl.read.1.tlog
