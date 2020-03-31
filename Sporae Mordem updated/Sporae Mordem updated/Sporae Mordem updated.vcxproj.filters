@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{87f66395-c101-401a-83ba-046ffcdac457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineassets">
+      <UniqueIdentifier>{199403d5-ed98-4dd9-a6cd-c726a2d8f0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Audio">
+      <UniqueIdentifier>{64adf2ca-f808-4e63-ab41-58a92ed6f633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Input">
+      <UniqueIdentifier>{142c2793-853d-4e68-9fda-4e476f6561f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Texture">
+      <UniqueIdentifier>{e08c87ad-0105-4dd5-abf6-c80fae42032c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\StateMachine">
+      <UniqueIdentifier>{2618f04c-ca1f-4427-a828-a3a7a1c9ff6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\StateMachine\States">
+      <UniqueIdentifier>{dd7afec8-d6d7-44a0-8da2-bee08b065c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects">
+      <UniqueIdentifier>{c3276e3a-1eb2-406b-a074-001d120deb92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Sounds">
+      <UniqueIdentifier>{f8832a0e-ac8f-4bf2-8cc0-089023627e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects">
+      <UniqueIdentifier>{49dabbde-29ed-42ac-a6d1-5331d6c6863d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Enemies">
+      <UniqueIdentifier>{352b1baf-3a5e-4ece-bb8e-497171621fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Players">
+      <UniqueIdentifier>{37569591-caff-4699-b0e3-083c909a7fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Pojectiles">
+      <UniqueIdentifier>{ed513908-00e1-4809-911e-e769df46be4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Level">
+      <UniqueIdentifier>{44357324-46d8-4cf3-aae7-b72c9399294d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Level\Wall">
+      <UniqueIdentifier>{4231793e-6ab6-41cf-8e02-8386e5b4b655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI">
+      <UniqueIdentifier>{24a3e8c2-fde0-4b57-80aa-0cfd156cf6c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI\Buttons">
+      <UniqueIdentifier>{0fa5eecd-adad-4de9-ac1f-13ea16b5a5dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Pathfinding">
+      <UniqueIdentifier>{1b2e3f70-f6f5-48fa-adcd-afc4e17bbeb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI\Fonts">
+      <UniqueIdentifier>{6e98b845-897e-4df6-a3d0-7dc79dab60c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\UI\Labels">
+      <UniqueIdentifier>{0df97ae8-9804-4b62-9ba1-320b6b431639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Pickups">
+      <UniqueIdentifier>{7d9859a8-eff8-4b97-b362-a2eacd8a575e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Pickups\Keys">
+      <UniqueIdentifier>{263732fa-fae4-43b1-85dd-f13e879d901c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Objects\Objects\Locked">
+      <UniqueIdentifier>{a98d05e2-d4f9-4316-a1e1-465b8f8280a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>engineassets</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>engineassets</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Managers\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Managers\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Managers\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Managers\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGame.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMenu.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Managers\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Managers\Objects\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="sounds.cpp">
+      <Filter>Managers\Objects\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Managers\Objects\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>Managers\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Managers\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>Managers\Objects\Pojectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileManager.cpp">
+      <Filter>Managers\Objects\Pojectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Managers\Objects\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="StatePause.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Managers\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="pauseButton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayButton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ResumeButton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitButton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="menuButton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Managers\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.cpp">
+      <Filter>Managers\Level\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadZone.cpp">
+      <Filter>Managers\Level\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelStateManager.cpp">
+      <Filter>Managers\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="settingsbutton.cpp">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSettings.cpp">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathfinder.cpp">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Managers\UI\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="LabelManager.cpp">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Managers\Objects\Objects\Pickups\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="PickupManager.cpp">
+      <Filter>Managers\Objects\Objects\Pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClCompile>
+    <ClCompile Include="LockedManager.cpp">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="engine.h">
+      <Filter>engineassets</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Managers\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Managers\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Managers\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGame.h">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="UTIL.h">
+      <Filter>engineassets</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMenu.h">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Managers\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Managers\Objects\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="sounds.h">
+      <Filter>Managers\Objects\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Managers\Objects\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>Managers\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Managers\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>Managers\Objects\Pojectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileManager.h">
+      <Filter>Managers\Objects\Pojectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Managers\Objects\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="StatePause.h">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Managers\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="pauseButton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayButton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="ResumeButton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitButton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="menuButton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Managers\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="wall.h">
+      <Filter>Managers\Level\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadZone.h">
+      <Filter>Managers\Level\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelStateManager.h">
+      <Filter>Managers\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="settingsbutton.h">
+      <Filter>Managers\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSettings.h">
+      <Filter>Managers\StateMachine\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathfinder.h">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Managers\Objects\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Managers\UI\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="LabelManager.h">
+      <Filter>Managers\UI\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Managers\Objects\Objects\Pickups\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupManager.h">
+      <Filter>Managers\Objects\Objects\Pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClInclude>
+    <ClInclude Include="LockedManager.h">
+      <Filter>Managers\Objects\Objects\Locked</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

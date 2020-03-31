@@ -28,6 +28,7 @@ bool UIManager::initManager()
 	buttonTextureID[4] = TextureManager::getInstance().addTexture("Image/menu.png"); //add file name
 	backgroundID[0] = TextureManager::getInstance().addTexture("Image/startscreen.png");
 	backgroundID[1] = TextureManager::getInstance().addTexture("Image/floor.png");
+	backgroundID[2] = TextureManager::getInstance().addTexture("Image/endgame.png");
 	std::cout << "uimanager init.\n";
 	return true;
 }
@@ -48,6 +49,12 @@ void UIManager::rednerMENU()
 void UIManager::renderGAME()
 {
 	TextureManager::getInstance().Draw(backgroundID[1], NULL, NULL);
+}
+
+void UIManager::renderLOSE()
+{
+	TextureManager::getInstance().DrawBacking(backgroundID[2]);
+	renderButtons();
 }
 
 void UIManager::clean()

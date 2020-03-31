@@ -6,11 +6,13 @@ void Player::keyboardmovement()
 	{
 		sneaking = true;
 		speed = 1;
+		sightDetectRange = 50;
 	}
 	else
 	{
 		sneaking = false;
 		speed = 5;
+		sightDetectRange = 200;
 	}
 
 	if (InputManager::getInstance().KeyDown(keybinds[0]))
@@ -49,7 +51,7 @@ Player::Player(int x, int y, int type, int id, int sound)
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	control_type = 1;
 	setDefaultinds();
-	speed = 5;
+	speed = 2;
 	SDL_WarpMouseInWindow(NULL, 0, 0);
 	TextureID = id;
 	SoundID = sound;
@@ -58,6 +60,7 @@ Player::Player(int x, int y, int type, int id, int sound)
 	sneaking = false;
 	footstepcounter = 0;
 	footsteprad = 40;
+	sightDetectRange = 200;
 }
 
 Player::~Player()
@@ -136,6 +139,11 @@ void Player::setHasKey(bool input)
 bool Player::getHadKey()
 {
 	return hasKey;
+}
+
+double Player::getDetctRange()
+{
+	return sightDetectRange;
 }
 
 void Player::moveUP()

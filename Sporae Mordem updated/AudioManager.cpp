@@ -103,6 +103,11 @@ void AudioManager::changeVolume(int chanel, int volume)
 	Mix_Volume(chanel, volume);
 }
 
+void AudioManager::stopALL()
+{
+	Mix_HaltChannel(-1);
+}
+
 void AudioManager::clean()
 {
 	sounds.clear();

@@ -131,7 +131,7 @@ public:
 			return value2;
 	}
 
-	static int Trunacate(int value1, int value2)
+	static int Trunacate(int value1, int value2) //returns the lower value
 	{
 		if (value1 < value2)
 			return value1;
@@ -145,5 +145,19 @@ public:
 			return limiter;
 		else
 			return value;
+	}
+
+
+	static bool linePointColide(SDL_Point* point, SDL_Point* lineStart, SDL_Point* lineEnd, int buffer)
+	{
+		int LineDistance = sqrt(pow(lineEnd->x - lineStart->x, 2) + pow(lineEnd->y - lineStart->y, 2));
+		int PointDistance1 = sqrt(pow(lineStart->x - point->x, 2) + pow(lineStart->y - point->y, 2));
+		int PointDistance2 = sqrt(pow(lineEnd->x - point->x, 2) + pow(lineEnd->y - point->y, 2));
+
+		if (PointDistance1 + PointDistance2 >= LineDistance - buffer && PointDistance1 + PointDistance2 <= LineDistance + buffer)
+		{
+			return true;
+		}
+		else return false;
 	}
 };

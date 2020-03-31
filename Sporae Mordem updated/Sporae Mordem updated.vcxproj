@@ -153,6 +153,7 @@
     <ClCompile Include="sounds.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateGame.cpp" />
+    <ClCompile Include="StateLose.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="StateMenu.cpp" />
     <ClCompile Include="StatePause.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="sounds.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateGame.h" />
+    <ClInclude Include="StateLose.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="StateMenu.h" />
     <ClInclude Include="StatePause.h" />

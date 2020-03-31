@@ -14,6 +14,8 @@ private:
 
 	bool hasKey, sneaking;
 
+	double sightDetectRange;
+
 	int footstepcounter, footsteprad;
 
 private:
@@ -41,4 +43,5 @@ public:
 	void setPos(int x, int y);
 	void setHasKey(bool input);
 	bool getHadKey();
+	double getDetctRange();
 };
