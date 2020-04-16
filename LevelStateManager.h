@@ -20,6 +20,7 @@ public:
 	void changeLevel(int level);
 	void setHasKeyCurrent(bool input);
 	void setUnlocked(bool input);
+	void reset();
 	~LevelStateManager();
 };
 

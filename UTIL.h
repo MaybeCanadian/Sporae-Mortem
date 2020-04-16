@@ -160,4 +160,23 @@ public:
 		}
 		else return false;
 	}
+
+	static double min(double in1, double in2)
+	{
+		if(in1 < in2)
+			return in1;
+		else
+			return in2;
+	}
+
+	static double max(double in1, double in2)
+	{
+		if (in1 < in2)
+		{
+			return in2;
+		}
+		else
+			return in1;
+	}
+
 };

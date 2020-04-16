@@ -36,6 +36,9 @@ private:
 	engine();
 	bool m_bRunning;
 	Uint32 m_start, m_end, m_delta, m_fps;
+	int mode;
+
+private:
 	bool init(const char* title, int xpos, int ypos, int width, int height, int flags); //this inits the engine and all systems involved
 	void wake(); //records time of frame start
 	void sleep(); //sleeps extra time
@@ -45,6 +48,8 @@ public:
 	static engine& getInstance();
 	int run(); //runs the engine
 	void quit(); //sets m_bRunning to false
+	int getMode();
+	void changeMode(int input);
 	~engine();
 };
 

@@ -42,7 +42,14 @@ bool Rock::getActive()
 
 void Rock::render()
 {
-	TextureManager::getInstance().Draw(texture, NULL, &pos);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(texture, NULL, &pos);
+	}
+	else if(engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, &pos);
+	}
 }
 
 Rock::~Rock()

@@ -1,18 +1,17 @@
 #pragma once
 #include "State.h"
-class StateLose :
+class Winstate :
 	public State
 {
 private:
-	StateLose();
-	int sound;
+	Winstate();
 public:
-	static StateLose& getInstance();
+	static Winstate& getInstance();
 	void update();
 	void render();
 	void handleEvents();
 	void enter();
 	void exit();
-	~StateLose();
+	~Winstate();
 };
 

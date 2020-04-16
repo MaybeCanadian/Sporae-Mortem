@@ -51,8 +51,8 @@ bool enemy::look(SDL_Point * nearPlayer)
 						if (dist < neardist)
 						{
 							neardist = dist;
-							nearPlayer->x = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x;
-							nearPlayer->y = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y;
+							nearPlayer->x = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x + ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->w / 2;
+							nearPlayer->y = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y + ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->h / 2;
 						}
 					}
 				}
@@ -65,8 +65,8 @@ bool enemy::look(SDL_Point * nearPlayer)
 					if (dist < neardist)
 					{
 						neardist = dist;
-						nearPlayer->x = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x;
-						nearPlayer->y = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y;
+						nearPlayer->x = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->x + ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->w / 2;
+						nearPlayer->y = ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->y + ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()->h / 2;
 					}
 				}
 			}
@@ -120,9 +120,9 @@ bool enemy::checkwalls(SDL_Point* player)
 	return false;
 }
 
-enemy::enemy(int x, int y, int type, int id)
+enemy::enemy(int x, int y, int type, int id, int sound)
 {
-	m_dst = { x, y, GRID /2, GRID /2 };
+	m_dst = { x, y, 30, 30 };
 	lookRange = 300;
 	textureID = id;
 	this->type = type;
@@ -133,6 +133,10 @@ enemy::enemy(int x, int y, int type, int id)
 	MaxVelocity = 4;
 	MaxForce = 2;
 	state = wander;
+	wandergoal = 0;
+	wanderplace = 0;
+	wandertimer = 0;
+	soundid = sound;
 }
 
 void enemy::update()
@@ -150,7 +154,14 @@ void enemy::update()
 
 void enemy::render()
 {
-	TextureManager::getInstance().DrawEx(textureID, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().DrawEx(textureID, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().DrawEx(0, &m_dst, NULL, rotation - 90, NULL, SDL_FLIP_NONE);
+	}
 }
 
 void enemy::clearpath()
@@ -191,32 +202,38 @@ void enemy::seek(SDL_Point * target)
 	SteeringForce.y = UTIL::Trunacate(SteeringForce.y, MaxForce);
 
 	moveVelocity(&nearPlayer);
+
+	checkcollision();
 }
 
 bool enemy::move(SDL_Point* pos)
 {
 	bool up = false, down = false, left = false, right = false;
 	SDL_Point buffer = { m_dst.x, m_dst.y };
-	if (m_dst.x < pos->x)
+	if (m_dst.x + m_dst.w /2 < pos->x)
 	{
 		left = true;
-			m_dst.x = m_dst.x + speed;
+		right = false;
+		m_dst.x = m_dst.x + speed * limitspeed(pos);
 	}
-	else if (m_dst.x > pos->x)
+	else if (m_dst.x + m_dst.w /2> pos->x)
 	{
 		right = true;
-			m_dst.x = m_dst.x - speed;
+		left = false;
+		m_dst.x = m_dst.x - speed * limitspeed(pos);
 	}
 
-	if (m_dst.y < pos->y)
+	if (m_dst.y + m_dst.h /2 < pos->y)
 	{
 		down = true;
-			m_dst.y = m_dst.y + speed;
+		up = false;
+		m_dst.y = m_dst.y + speed * limitspeed(pos);
 	}
-	else if (m_dst.y > pos->y)
+	else if (m_dst.y + m_dst.h/2> pos->y)
 	{
 		up = true;
-			m_dst.y = m_dst.y - speed;
+		down = false;
+		m_dst.y = m_dst.y - speed * limitspeed(pos);
 	}
 	if (up)
 		if (right)
@@ -237,7 +254,7 @@ bool enemy::move(SDL_Point* pos)
 	else if (left)
 		rotation = 180;
 
-	if (m_dst.x == pos->x && m_dst.y == pos->y)
+	if (m_dst.x + m_dst.w /2 == pos->x && m_dst.y + m_dst.h /2== pos->y)
 	{
 		std::cout << "reached a target.\n";
 		path.erase(path.begin());
@@ -264,10 +281,45 @@ double enemy::limitspeed(SDL_Point* target)
 {
 	double dist = sqrt(pow(m_dst.x - target->x, 2) + pow(m_dst.y - target->y, 2));
 
-	if (dist < 10)
-		return dist / 10;
+	if (dist < 4)
+		return dist / 4;
 	else
 		return 1.0;
+}
+
+void enemy::checkcollision()
+{
+	for (int i = 0; i < LevelManager::getInstance().getWallNum(); i++)
+	{
+		if (UTIL::AABBcollide(&m_dst, LevelManager::getInstance().getWall(i)->getRect()))
+		{
+			correctcollision(LevelManager::getInstance().getWall(i)->getRect());
+		}
+	}
+}
+
+void enemy::correctcollision(SDL_Rect* plat)
+{
+	if (m_dst.y + m_dst.w - currentVelocity.y <= plat->y)
+	{
+		m_dst.y = plat->y - m_dst.h - 1;
+		currentVelocity.y = 0;
+	}
+	if (m_dst.y - currentVelocity.y >= plat->y + plat->h)
+	{
+		m_dst.y = plat->y + plat->h + 1;
+		currentVelocity.y = 0;
+	}
+	if (m_dst.x + m_dst.w - currentVelocity.x <= plat->x)
+	{
+		m_dst.x = plat->x - m_dst.w - 1;
+		currentVelocity.x = 0;
+	}
+	if (m_dst.x - currentVelocity.x >= plat->x + plat->w)
+	{
+		m_dst.x = plat->x + plat->w + 1;
+		currentVelocity.x = 0;
+	}
 }
 
 bool enemy::AI()
@@ -297,16 +349,26 @@ bool enemy::AI()
 
 bool enemy::wandering()
 {
+	speed = 1;
 	if (look(&nearPlayer) == true)
 	{
+		speed = 4;
+		wandergoal = 0;
+		wanderplace = 0;
+		wandertimer = 0;
+		clearpath();
 		state = hunt;
 		return true;
 	}
 	else if (listen(&nearSound) == true)
 	{
-		state = search; 
+		speed = 4;
+		wandergoal = 0;
+		wanderplace = 0;
+		wandertimer = 0;
+		state = search;
 		clearpath();
-		if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x, m_dst.y, nearSound.x, nearSound.y))
+		if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2, nearSound.x, nearSound.y))
 		{
 			return true;
 		}
@@ -319,9 +381,72 @@ bool enemy::wandering()
 	}
 	else
 	{
-	
-	}
+		if (wandergoal == 0)
+		{
+			srand(time(NULL));
 
+			random = rand();
+
+			wandergoal = random % 60 + 60;
+
+			bool invalid = true;
+
+			while (invalid == true)
+			{
+				srand(random);
+
+				random = rand();
+
+				wanderplace = random % ObjectManager::getInstance().getPathFinder()->getNodeNum();
+
+				std::cout << "wander place is " << wanderplace << std::endl;
+
+				clearpath();
+				if (ObjectManager::getInstance().getPathFinder()->getNode(wanderplace)->getpassable() == true)
+				{
+					SDL_Point buffer = { m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2};
+					if (UTIL::distancePoint(ObjectManager::getInstance().getPathFinder()->getNode(wanderplace)->getPoint(), &buffer) < 200)
+					{
+						invalid = false;
+					}
+				}
+			}
+
+			ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x, m_dst.y, ObjectManager::getInstance().getPathFinder()->getNode(wanderplace)->getPoint()->x, ObjectManager::getInstance().getPathFinder()->getNode(wanderplace)->getPoint()->y);
+
+			wandertimer = 0;
+
+		}
+		else
+		{
+			if (wandertimer > wandergoal)
+			{
+				if (!path.empty())
+				{
+					if (move(&path.front()))
+					{
+					}
+					else
+					{
+						clearpath();
+						wandergoal = 0;
+						wanderplace = 0;
+						wandertimer = 0;
+					}
+				}
+				else
+				{
+					wanderplace = 0;
+					wandertimer = 0;
+					wandergoal = 0;
+				}
+			}
+			else
+			{
+				wandertimer++;
+			}
+		}
+	}
 	return true;
 }
 
@@ -330,13 +455,13 @@ bool enemy::hunting()
 	if (look(&nearPlayer) == true)
 	{
 		clearpath();
-		SDL_Point buffer = { m_dst.x, m_dst.y };
-		if (UTIL::distancePoint(&buffer, &nearPlayer) < 58)
+		SDL_Point buffer = { m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2};
+		if (UTIL::distancePoint(&buffer, &nearPlayer) < 100)
 		{
 			seek(&nearPlayer);
 			rotation = angle;
 		}
-		else if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x, m_dst.y, nearPlayer.x, nearPlayer.y))
+		else if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2, nearPlayer.x, nearPlayer.y))
 		{
 			if (path.size() > 1)
 			{
@@ -349,14 +474,14 @@ bool enemy::hunting()
 	else
 	{
 		clearpath();
-		SDL_Point buffer = { m_dst.x, m_dst.y };
+		SDL_Point buffer = { m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2 };
 		if (UTIL::distancePoint(&buffer, &nearPlayer) < 58)
 		{
 			clearpath();
 			state = wander;
 			return true;
 		}
-		else if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x, m_dst.y, nearPlayer.x, nearPlayer.y))
+		else if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2, nearPlayer.x, nearPlayer.y))
 		{
 			if (path.size() > 1)
 			{
@@ -380,7 +505,7 @@ bool enemy::searching()
 	{
 		std::cout << "hear.\n";
 		clearpath();
-		if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x, m_dst.y, nearSound.x, nearSound.y))
+		if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x + m_dst.w /2, m_dst.y + m_dst.h /2, nearSound.x, nearSound.y))
 		{
 			return true;
 		}
@@ -392,15 +517,21 @@ bool enemy::searching()
 	}
 	else
 	{
-		SDL_Point buffer = { m_dst.x, m_dst.y };
-		if (UTIL::distancePoint(&buffer, &nearSound) < 58)
+		if (ObjectManager::getInstance().getPathFinder()->findPath(&path, m_dst.x + m_dst.w / 2, m_dst.y + m_dst.h / 2, nearSound.x, nearSound.y))
 		{
-				clearpath();
-				state = wander;
-				return true;
-		}
 
-		followpath();
+		}
+		SDL_Point buffer = { m_dst.x + m_dst.w / 2, m_dst.y + m_dst.h /2};
+		
+		move(&path.front());
+
+
+		if(UTIL::distancePoint(&nearSound, &buffer) < 58)
+		{
+			clearpath();
+			state = wander;
+			return true;
+		}
 	}
 	return false;
 }

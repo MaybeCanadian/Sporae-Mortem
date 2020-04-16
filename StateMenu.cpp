@@ -31,6 +31,11 @@ void StateMenu::handleEvents()
 		case SDL_KEYDOWN: // records a key press event
 			if (event.key.keysym.sym == SDLK_ESCAPE)
 				engine::getInstance().quit();
+			else if (event.key.keysym.sym == SDLK_t)
+				if (engine::getInstance().getMode() == 0)
+					engine::getInstance().changeMode(1);
+				else
+					engine::getInstance().changeMode(0);
 			break;
 		case SDL_MOUSEBUTTONDOWN: //records a mouse down event
 			InputManager::getInstance().mouseDown(event.button);

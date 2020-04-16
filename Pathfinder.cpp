@@ -243,6 +243,16 @@ void Pathfinder::clean()
 	std::cout << "Pathfinder cleaned.\n";
 }
 
+int Pathfinder::getNodeNum()
+{
+	return nodes.size();
+}
+
+node * Pathfinder::getNode(int i)
+{
+	return nodes[i];
+}
+
 void Pathfinder::render()
 {
 	if (!nodes.empty())

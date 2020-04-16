@@ -113,6 +113,8 @@ bool TextureManager::initManager(const char * title, int xpos, int ypos, int wid
 		if (m_pRenderer != NULL)
 		{
 			SetBlendMode();
+
+			addTexture("Image/tree.png");
 			std::cout << "textureManager init.\n";
 			return true;
 		}

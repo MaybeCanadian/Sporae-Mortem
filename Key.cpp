@@ -22,7 +22,14 @@ void Key::update()
 
 void Key::render()
 {
-	TextureManager::getInstance().Draw(textureID, NULL, &pos);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(textureID, NULL, &pos);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, &pos);
+	}
 }
 
 bool Key::getActive()

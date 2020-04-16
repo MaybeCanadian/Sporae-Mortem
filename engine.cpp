@@ -3,6 +3,7 @@
 engine::engine()
 {
 	m_bRunning = false;
+	mode = 0;
 }
 
 bool engine::init(const char * title, int xpos, int ypos, int width, int height, int flags)
@@ -118,6 +119,16 @@ int engine::run()
 void engine::quit()
 {
 	m_bRunning = false;
+}
+
+int engine::getMode()
+{
+	return mode;
+}
+
+void engine::changeMode(int input)
+{
+	mode = input;
 }
 
 engine::~engine()

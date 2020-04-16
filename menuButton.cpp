@@ -5,6 +5,7 @@
 void menuButton::onClick()
 {
 	ObjectManager::getInstance().getPlayerManager()->clearPlayers();
+	LevelStateManager::getInstance().reset();
 	StateManager::getInstance().changeState(MENU);
 }
 

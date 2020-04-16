@@ -19,7 +19,13 @@ private:
 	SDL_Point currentVelocity, SteeringForce, desiredVelocity;
 	double angle;
 
+	int wandertimer, wandergoal;
+	int wanderplace;
+	int random;
+
 	int state;
+
+	int soundid;
 
 private:
 	bool look(SDL_Point* nearPlayer);
@@ -31,6 +37,8 @@ private:
 	bool move(SDL_Point* pos);
 	bool moveVelocity(SDL_Point* target);
 	double limitspeed(SDL_Point* target);
+	void checkcollision();
+	void correctcollision(SDL_Rect* plat);
 
 	bool AI();
 	bool wandering();
@@ -38,7 +46,7 @@ private:
 	bool searching();
 
 public:
-	enemy(int x, int y, int type, int id);
+	enemy(int x, int y, int type, int id, int sound);
 	void update();
 	void render();
 	void clearpath();

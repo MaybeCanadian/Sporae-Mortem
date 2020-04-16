@@ -12,6 +12,10 @@ private:
 	int mouseX, mouseY;
 	int TextureID, SoundID, chanel; //for assets
 
+	double accelx, accely, velx, vely, accel;
+
+	double drag, maxVel, maxAccel;
+
 	bool hasKey, sneaking;
 
 	double sightDetectRange;
@@ -21,13 +25,13 @@ private:
 private:
 	void keyboardmovement(); //movement for keyboard control
 	void controllermovement(); //moveent for controller not added
-	void moveUP(); //move up
-	void moveDOWN(); //move down
-	void moveRIGHT(); //move right
-	void moveLEFT(); //move left
 	void mouseAttack();
 	void playSound();
 	void stopSound();
+
+	void move();
+	void checkCollisions();
+	void correctcollision(SDL_Rect* plat);
 
 public:
 	Player(int x, int y, int type, int id, int sound);

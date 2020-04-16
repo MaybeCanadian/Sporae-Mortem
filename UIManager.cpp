@@ -29,32 +29,64 @@ bool UIManager::initManager()
 	backgroundID[0] = TextureManager::getInstance().addTexture("Image/startscreen.png");
 	backgroundID[1] = TextureManager::getInstance().addTexture("Image/floor.png");
 	backgroundID[2] = TextureManager::getInstance().addTexture("Image/endgame.png");
+	backgroundID[3] = TextureManager::getInstance().addTexture("Image/winscreen.png");
 	std::cout << "uimanager init.\n";
 	return true;
 }
 
 void UIManager::renderPAUSE()
 {
-	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
-	TextureManager::getInstance().FillRect(NULL);
 	renderButtons();
 }
 
 void UIManager::rednerMENU()
 {
-	TextureManager::getInstance().Draw(backgroundID[0], NULL, NULL);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(backgroundID[0], NULL, NULL);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, NULL);
+	}
 	renderButtons();
 }
 
 void UIManager::renderGAME()
 {
-	TextureManager::getInstance().Draw(backgroundID[1], NULL, NULL);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(backgroundID[1], NULL, NULL);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, NULL);
+	}
 }
 
 void UIManager::renderLOSE()
 {
-	TextureManager::getInstance().DrawBacking(backgroundID[2]);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(backgroundID[2], NULL, NULL);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, NULL);
+	}
 	renderButtons();
+}
+
+void UIManager::renderWIN()
+{
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().Draw(backgroundID[3], NULL, NULL);
+	}
+	else if (engine::getInstance().getMode() == 1)
+	{
+		TextureManager::getInstance().Draw(0, NULL, NULL);
+	}
 }
 
 void UIManager::clean()

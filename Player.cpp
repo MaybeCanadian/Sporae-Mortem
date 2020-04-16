@@ -5,37 +5,43 @@ void Player::keyboardmovement()
 	if (InputManager::getInstance().getMouseState(2) == true)
 	{
 		sneaking = true;
-		speed = 1;
+		maxVel = 1;
 		sightDetectRange = 50;
 	}
 	else
 	{
 		sneaking = false;
-		speed = 4;
+		maxVel = 4;
 		sightDetectRange = 200;
 	}
 
 	if (InputManager::getInstance().KeyDown(keybinds[0]))
 	{
-		moveUP();
+		accely = accely - accel;
+		playSound();
 	}
 	if (InputManager::getInstance().KeyDown(keybinds[1]))
 	{
-		moveDOWN();
+		accely = accely + accel;
+		playSound();
 	}
 	if (InputManager::getInstance().KeyDown(keybinds[2]))
 	{
-		moveLEFT();
+		accelx = accelx - accel;
+		playSound();
 	}
 	if (InputManager::getInstance().KeyDown(keybinds[3]))
 	{
-		moveRIGHT();
+		accelx = accelx + accel;
+		playSound();
 	}
 
 	if (!(InputManager::getInstance().KeyDown(keybinds[0]) || InputManager::getInstance().KeyDown(keybinds[1]) || InputManager::getInstance().KeyDown(keybinds[2]) || InputManager::getInstance().KeyDown(keybinds[3])))
 	{
 		stopSound();
 	}
+
+
 }
 
 void Player::controllermovement()
@@ -46,8 +52,8 @@ Player::Player(int x, int y, int type, int id, int sound)
 {
 	m_dst.x = x;
 	m_dst.y = y;
-	m_dst.h = GRID/2;
-	m_dst.w = GRID/2;
+	m_dst.h = 30;
+	m_dst.w = 30;
 	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
 	control_type = 1;
 	setDefaultinds();
@@ -59,8 +65,15 @@ Player::Player(int x, int y, int type, int id, int sound)
 	hasKey = false;
 	sneaking = false;
 	footstepcounter = 0;
-	footsteprad = 40;
+	footsteprad = 80;
 	sightDetectRange = 200;
+	accelx = accely = velx = vely = 0;
+
+	accel = 5;
+
+	maxAccel = 10;
+	maxVel = 5;
+	drag = 0.9;
 }
 
 Player::~Player()
@@ -113,11 +126,24 @@ void Player::update()
 	else
 		std::cout << "error" << std::endl;
 
+	move();
+
+	ObjectManager::getInstance().getLocked()->checkNearLocked(&m_dst, hasKey, 1);
+
+	accelx = accely = 0;
+
 }
 
 void Player::render()
 {
-	TextureManager::getInstance().DrawEx(TextureID, &m_dst, NULL, rotation * 180 / 3.14 + 90, NULL, SDL_FLIP_NONE);
+	if (engine::getInstance().getMode() == 0)
+	{
+		TextureManager::getInstance().DrawEx(TextureID, &m_dst, NULL, rotation * 180 / 3.14 + 90, NULL, SDL_FLIP_NONE);
+	}
+	else if(engine::getInstance().getMode() ==1)
+	{
+		TextureManager::getInstance().DrawEx(0, &m_dst, NULL, rotation * 180 / 3.14 + 90, NULL, SDL_FLIP_NONE);
+	}
 }
 
 void Player::respawn()
@@ -144,39 +170,6 @@ bool Player::getHadKey()
 double Player::getDetctRange()
 {
 	return sightDetectRange;
-}
-
-void Player::moveUP()
-{
-	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
-	future.y -= speed;
-	if (!LevelManager::getInstance().checkWallNear(&future) && future.y > 0 && !ObjectManager::getInstance().getLocked()->checkNearLocked(&future, hasKey, 1))
-	{
-		m_dst.y -= speed;
-		playSound();
-	}
-}
-
-void Player::moveDOWN()
-{
-	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
-	future.y += speed;
-	if (!LevelManager::getInstance().checkWallNear(&future) && future.y < HEIGHT && !ObjectManager::getInstance().getLocked()->checkNearLocked(&future, hasKey, 1))
-	{
-		m_dst.y += speed;
-		playSound();
-	}
-}
-
-void Player::moveLEFT()
-{
-	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
-	future.x -= speed;
-	if (!LevelManager::getInstance().checkWallNear(&future) && future.x > 0 && !ObjectManager::getInstance().getLocked()->checkNearLocked(&future, hasKey, 1))
-	{
-		m_dst.x -= speed;
-		playSound();
-	}
 }
 
 void Player::mouseAttack()
@@ -243,15 +236,59 @@ void Player::stopSound()
 	}
 }
 
-void Player::moveRIGHT()
+void Player::move()
 {
-	future = { m_dst.x, m_dst.y, m_dst.h, m_dst.w };
-	future.x += speed;
-	if (!LevelManager::getInstance().checkWallNear(&future) && future.x < WIDTH && !ObjectManager::getInstance().getLocked()->checkNearLocked(&future, hasKey, 1))
-	{
-		m_dst.x += speed;
-		playSound();
-	}
+	accelx = UTIL::min(UTIL::max(accelx, -maxAccel), maxAccel);
+	accely = UTIL::min(UTIL::max(accely, -maxAccel), maxAccel);
+
+	velx = (velx + accelx) * drag;
+	vely = (vely + accely) * drag;
+
+	velx = UTIL::min(UTIL::max(velx, -maxVel), maxVel);
+	vely = UTIL::min(UTIL::max(vely, -maxVel), maxVel);
+
+	m_dst.x = m_dst.x + (int)velx;
+	m_dst.y = m_dst.y + (int)vely;
+
+
+	checkCollisions();
+	
 }
 
+void Player::checkCollisions()
+{
+	for (int i = 0; i < LevelManager::getInstance().getWallNum(); i++)
+	{
+		if (UTIL::AABBcollide(&m_dst, LevelManager::getInstance().getWall(i)->getRect()))
+		{
+			correctcollision(LevelManager::getInstance().getWall(i)->getRect());
+			break;
+		}
+	}
+
+}
+
+void Player::correctcollision(SDL_Rect * plat)
+{
+	if (m_dst.y + m_dst.w - vely <= plat->y)
+	{
+		m_dst.y = plat->y - m_dst.h - 1;
+		vely = 0;
+	}
+	if (m_dst.y - vely >= plat->y + plat->h)
+	{
+		m_dst.y = plat->y + plat->h + 1;
+		vely = 0;
+	}
+	if (m_dst.x + m_dst.w - velx <= plat->x)
+	{
+		m_dst.x = plat->x - m_dst.w - 1;
+		velx = 0;
+	}
+	if (m_dst.x - velx >= plat->x + plat->w)
+	{
+		m_dst.x = plat->x + plat->w + 1;
+		velx = 0;
+	}
+}
 

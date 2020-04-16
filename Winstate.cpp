@@ -1,32 +1,29 @@
-#include "StateLose.h"
+#include "Winstate.h"
 
 
 
-StateLose::StateLose()
+Winstate::Winstate()
 {
-	sound = AudioManager::getInstance().addSound("sound/scream.wav");
 }
 
-
-StateLose & StateLose::getInstance()
+Winstate & Winstate::getInstance()
 {
-	static StateLose instance;
+	static Winstate instance;
 	return instance;
 }
 
-void StateLose::update()
+void Winstate::update()
 {
-	UIManager::getInstance().update();
 	InputManager::getInstance().update();
 }
 
-void StateLose::render()
+void Winstate::render()
 {
-	UIManager::getInstance().renderLOSE();
+	UIManager::getInstance().renderWIN();
 	TextureManager::getInstance().RenderPresent();
 }
 
-void StateLose::handleEvents()
+void Winstate::handleEvents()
 {
 	SDL_Event event;
 
@@ -51,20 +48,19 @@ void StateLose::handleEvents()
 	}
 }
 
-void StateLose::enter()
+void Winstate::enter()
 {
-	ObjectManager::getInstance().getPlayerManager()->clearPlayers();
-	ObjectManager::getInstance().getProjectileManager()->clearProjectiles();
+	UIManager::getInstance().addButton(WIDTH / 2 - 100, HEIGHT / 2 + HEIGHT / 4 - 50, 200, 100, 4);
 	AudioManager::getInstance().stopALL();
-	UIManager::getInstance().addButton(412, 400, 200, 80, 4);
-	AudioManager::getInstance().playSound(sound, -1, 0);
 }
 
-void StateLose::exit()
+void Winstate::exit()
 {
 	UIManager::getInstance().clearButtons();
+	ObjectManager::getInstance().getPlayerManager()->clearPlayers();
 }
 
-StateLose::~StateLose()
+
+Winstate::~Winstate()
 {
 }

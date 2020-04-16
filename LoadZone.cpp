@@ -22,8 +22,8 @@ int LoadZone::getNext()
 
 void LoadZone::render()
 {
-	TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
-	TextureManager::getInstance().FillRect(&z_dst);
+	/*TextureManager::getInstance().SetDrawColor(0, 0, 0, 255);
+	TextureManager::getInstance().FillRect(&z_dst);*/
 }
 
 void LoadZone::update()

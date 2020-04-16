@@ -8,6 +8,7 @@ class EnemyManager
 private:
 	std::vector<enemy*> e_vEnemies;
 	int EnemyID;
+	int enemysound;
 
 private:
 	void loadTextures();

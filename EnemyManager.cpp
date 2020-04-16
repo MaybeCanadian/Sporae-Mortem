@@ -5,6 +5,7 @@
 void EnemyManager::loadTextures()
 {
 	EnemyID = TextureManager::getInstance().addTexture("Image/zombie.png");
+	enemysound = AudioManager::getInstance().addSound("sound/scream.wav");
 }
 
 EnemyManager::EnemyManager()
@@ -27,7 +28,7 @@ void EnemyManager::clean()
 
 void EnemyManager::addEnemy(int x, int y, int type)
 {
-	e_vEnemies.push_back(new enemy(x, y, type, EnemyID));
+	e_vEnemies.push_back(new enemy(x, y, type, EnemyID, enemysound));
 }
 
 void EnemyManager::update()

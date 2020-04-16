@@ -5,6 +5,7 @@
 #define PAUSE 2
 #define SETTINGS 3
 #define LOSE 4
+#define Win 5
 //this is a virtual class
 class State
 {
@@ -24,3 +25,4 @@ public:
 #include "StatePause.h"
 #include "StateSettings.h"
 #include "StateLose.h"
+#include "Winstate.h"

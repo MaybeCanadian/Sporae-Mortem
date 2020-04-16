@@ -140,6 +140,7 @@ void LevelManager::loadLevel(std::string level, std::string levelData, bool key,
 	char input;
 	int datainput;
 	int datainput2;
+	int count = 0;
 
 	file >> gridrows >> gridcols;
 
@@ -155,8 +156,13 @@ void LevelManager::loadLevel(std::string level, std::string levelData, bool key,
 				switch (input)
 				{
 				case '0':
-					addWall(GRID * col, GRID * row, 1);
+					addWall(GRID * col, GRID * row, count);
 					ObjectManager::getInstance().getPathFinder()->addNode(GRID * col, GRID * row, false);
+					count++;
+					if (count == 3)
+					{
+						count = 0;
+					}
 					break;
 				case '1':
 					ObjectManager::getInstance().getPathFinder()->addNode(GRID*col, GRID*row, true);

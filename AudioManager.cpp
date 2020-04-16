@@ -20,7 +20,7 @@ bool AudioManager::initManager()
 		Mix_AllocateChannels(32);
 		bgm = Mix_LoadMUS("sound/bg.mp3");
 		bgm2= Mix_LoadMUS("sound/Troops.mp3");
-		Mix_Volume(0, MIX_MAX_VOLUME / 2);
+		Mix_Volume(-1, MIX_MAX_VOLUME / 2);
 		std::cout << "audioManager init.\n";
 		return true;
 	}

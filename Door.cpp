@@ -23,7 +23,7 @@ void Door::update()
 		{
 			if (UTIL::AABBcollide(&pos, ObjectManager::getInstance().getPlayerManager()->getPlayers(i)->getRect()))
 			{
-				LevelStateManager::getInstance().changeLevel(nextzone);
+				StateManager::getInstance().changeState(Win);
 			}
 		}
 	}
@@ -31,8 +31,14 @@ void Door::update()
 
 void Door::render()
 {
-	if(locked == true)
+	if (locked == true)
+	{
+		if (engine::getInstance().getMode() == 1)
+		{
+			TextureManager::getInstance().Draw(0, NULL, &pos);
+		}
 		TextureManager::getInstance().Draw(textureID, NULL, &pos);
+	}
 }
 
 SDL_Rect * Door::getRect()

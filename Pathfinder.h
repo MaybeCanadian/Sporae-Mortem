@@ -23,6 +23,9 @@ public:
 	bool initManager(); //inits the manager
 	void clean(); //cleans the manager
 
+	int getNodeNum();
+	node* getNode(int i);
+
 
 	void render();
 	Pathfinder();

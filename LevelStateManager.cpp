@@ -70,6 +70,7 @@ void LevelStateManager::changeLevel(int level)
 	ObjectManager::getInstance().getEnemyManager()->ClearEnemies();
 	ObjectManager::getInstance().getLocked()->clearDoors();
 	ObjectManager::getInstance().getSoundManager()->clearSounds();
+	ObjectManager::getInstance().getPickupManager()->clearKeys();
 	currentLevel = level;
 	LevelManager::getInstance().loadLevel(levels[level], levelsdata[level], haskey[level], hasdoor[level], unlocked);
 	if(level!=0)
@@ -84,6 +85,35 @@ void LevelStateManager::setHasKeyCurrent(bool input)
 void LevelStateManager::setUnlocked(bool input)
 {
 	unlocked = input;
+}
+
+void LevelStateManager::reset()
+{
+	int random = rand();
+	int keyroom = rand() % 3 + 1;
+	std::cout << "the key shoudl be in room " << keyroom << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (i == keyroom)
+			haskey[i] = true;
+		else
+			haskey[i] = false;
+	}
+	srand(random);
+	random = rand();
+	int doorroom = random % 4;
+	std::cout << "door should be in room " << doorroom << std::endl;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (i == doorroom)
+			hasdoor[i] = true;
+		else
+			hasdoor[i] = false;
+	}
+	
+	unlocked = false;
+	currentLevel = 0;
 }
 
 LevelStateManager::~LevelStateManager()
